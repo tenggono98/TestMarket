@@ -1,71 +1,91 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <!-- Required meta tags -->
+    <title>Login Page</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="mainstyle.css">
+    <?php session_start(); ?>
 
-    <title>About</title>
   </head>
-  <body>
-    
-
-  <div class="Header">
   
-    <?php
+  <body>
 
-    define("HEADER", "content/header.php", false);
+    <section class="LoginPage">
+      <table Class="LoginBorder" cellpadding="50px">
+        <tr>
+          <td >
+            <div  id="LoginContent">
+              <form method="POST" action="">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" name="btn" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+          </td>
+        </tr>
+    </table>
+    
+    </section>
 
-    if (!file_exists(HEADER)) {
-        throw new Exception("file not Found. Path: " . header);
+  <?php
+
+  if (isset($_POST['btn'])) {
+
+    include "Function/condb.php";
+
+    $inemail = $_POST['email'];
+    $inpass = $_POST['pass'];
+
+
+    $sql = "SELECT * FROM STAFF WHERE STAFFEMAIL = '$inemail' AND STAFFPASSWORD = '$inpass' ";
+    $res = mysqli_query($con, $sql);
+    $row = mysqli_fetch_assoc($res);
+
+    $email = $row['StaffEmail'];
+    $pass = $row['StaffPassword'];
+    $name = $row['StaffName'];
+    $type = $row['STypeID'];
+
+    if ($inemail == "" && $inpass == "") {
+      echo "Email Dan Password Harus di Isi !!";
     } else {
-        require_once(HEADER);
+
+      if ($inemail == $email && $inpass == $pass) {
+        $_SESSION['name'] = $name;
+        if ($type == "TP001") {
+          header('location:Admin/home_M.php');
+        } else if ($type == "TP002") {
+          header('location:User/home.php');
+        }
+
+
+      } else
+        echo "Email Atau Password Salah";
     }
 
-    ?>
-  
-  
-  </div>
-  
-  
-  
-  
-<div class="content_index">
+  }
 
+  ?>
 
-</div>
-  
-  
-  <div Class="footer">
-
-  <div class="jumbotron jumbotron-fluid">
-        <div class="container text-left">
-            <p class="lead">By .Alfonso Tenggono</p>
-        </div>
-    </div>
-  </div>
-  
-  
-  
-  </div>
     
 
 
 
-  
 
 
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      
   </body>
 </html>
+
+

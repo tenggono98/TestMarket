@@ -1,18 +1,29 @@
-.Header {
-    padding-top: 1%;
-    padding-left: 20%;
-    padding-right: 20%;
+ .Header {
+     padding-top: 1%;
+     padding-left: 10%;
+     padding-right: 10%;
+
+ }
+
+ .content_index {
+     padding-top: 1%;
+
+ }
 
 
-}
+ body {
+     background-color: lightcyan;
 
-.content_index {
-    padding-top: 1%;
+ }
 
-}
+ #LoginContent {}
 
+ .loginPage {}
 
-body {
-    background-color: lightcyan;
+ .LoginBorder {
+     margin: 15% auto 0 auto;
+     width: 50%;
+     background-color: dimgrey;
+     text-shadow: 100px;
 
-}
+ }
