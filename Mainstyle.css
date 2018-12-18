@@ -1,3 +1,7 @@
+ body {
+     background-color: lightcyan;
+ }
+
  .Header {
      padding-top: 1%;
      padding-left: 10%;
@@ -5,20 +9,13 @@
 
  }
 
+
+ /* Index.php */
+
  .content_index {
      padding-top: 1%;
 
  }
-
-
- body {
-     background-color: lightcyan;
-
- }
-
- #LoginContent {}
-
- .loginPage {}
 
  .LoginBorder {
      margin: 15% auto 0 auto;
@@ -26,4 +23,9 @@
      background-color: dimgrey;
      text-shadow: 100px;
 
+ }
+
+ .LabelLogin {
+     color: steelblue;
+     text-shadow: 4px 3px 1px black;
  }
