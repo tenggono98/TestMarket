@@ -11,10 +11,14 @@ $sql = "DELETE FROM item WHERE ItemID = '$idin' ";
 $res = mysqli_query($con, $sql);
 
 if ($res) {
-	echo "<center><h1>Data Sudah di Hapus !</h1></center>";
+	echo '<script language="javascript">';
+	echo 'alert("Data Sudah di Hapus !")';
+	echo '</script>';
 	echo "<meta http-equiv='refresh' content= '1 url=../Admin/item_M.php' >";
 } else {
-	echo "Tidak Dpat Di hapus !";
+	echo '<script language="javascript">';
+	echo 'alert("Data Tidak Bisa di hapus !")';
+	echo '</script>';
 	echo mysqli_error();
 }
 
@@ -25,7 +29,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 session_start();
 
-if ($username = $_SESSION['user']) {
+if ($username = $_SESSION['name']) {
     if(!$type = $_SESSION['type'] == "TP001" ){
         header('location:../user/home.php');
     }

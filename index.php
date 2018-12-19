@@ -60,7 +60,10 @@
     $id = $row['StaffID'];
 
     if ($inemail == "" && $inpass == "") {
-      echo "Email Dan Password Harus di Isi !!";
+      echo '<script language="javascript">';
+      echo 'alert("Email dan Password Harus di Isi !")';
+      echo '</script>';
+
     } else {
 
       if ($inemail == $email && $inpass == $pass) {
@@ -79,8 +82,13 @@
         }
 
 
-      } else
-        echo "Email Atau Password Salah";
+      } else{
+        echo '<script language="javascript">';
+        echo 'alert("Email Atau Password Salah")';
+        echo '</script>';
+      }
+
+
     }
 
   }

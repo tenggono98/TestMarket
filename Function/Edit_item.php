@@ -85,11 +85,18 @@
             $res = mysqli_query($con, $sql);
 
             if ($res) {
-                echo "Data Berhasil di Update !";
+                echo '<script language="javascript">';
+                echo 'alert("Data Berhasil di Update !")';
+                echo '</script>';
+
                 echo "<meta http-equiv = 'refresh' content='2 url=../Admin/Item_M.php' >";
 
-            } else
-                echo "Data Tidak bisa di Simpan ! ";
+            } else{
+                echo '<script language="javascript">';
+                echo 'alert("Data Tidak bisa di Edit !")';
+                echo '</script>';
+            }
+           
 
 
         }
@@ -106,7 +113,7 @@
 
     session_start();
 
-    if ($username = $_SESSION['user']) {
+    if ($username = $_SESSION['name']) {
         if(!$type = $_SESSION['type'] == "TP001" ){
             header('location:../user/home.php');
         }

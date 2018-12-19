@@ -33,29 +33,44 @@
  /* admin home */
 
 
- .ContentHome_M{
-    margin-top: 4%;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding-bottom: 2%;
-    background-color: white;
+ .ContentHome_M {
+     margin-top: 4%;
+     margin-left: 20%;
+     margin-right: 20%;
+     padding-bottom: 2%;
+     background-color: white;
  }
 
  /* admin item */
 
- .Contentitem_M{
-    margin-top: 4%;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding-bottom: 2%;
-    background-color:white;
+ .Contentitem_M {
+     margin-top: 4%;
+     margin-left: 20%;
+     margin-right: 20%;
+     padding-bottom: 2%;
+     background-color: white;
  }
-/* admin edit item */
 
-.ContentEdit{
-    margin-top: 4%;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding-bottom: 2%;
-    background-color:white;
+ .results tr[visible='false'],
+ .no-result {
+     display: none;
+ }
+
+ .results tr[visible='true'] {
+     display: table-row;
+ }
+
+ .counter {
+     padding: 8px;
+     color: #ccc;
+ }
+
+ /* admin edit item */
+
+ .ContentEdit {
+     margin-top: 4%;
+     margin-left: 20%;
+     margin-right: 20%;
+     padding-bottom: 2%;
+     background-color: white;
  }

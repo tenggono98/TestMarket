@@ -6,7 +6,8 @@
     <title>Edit Item</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../mainstyle.css">
 </head>
     <body>
 
@@ -63,7 +64,7 @@
             <Label>Desc</Label><br>
             <textarea name ="desc"cols=50 rows=5></textarea><br> 
             <br>
-            <input type="submit" value="Submit" name="sub" >
+            <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >
             <input type="submit" value="Back" name="back" >
         </form>
         </div>
@@ -86,11 +87,19 @@
             $res = mysqli_query($con, $sql);
 
             if ($res) {
-                echo "Data Berhasil di Input !";
-                echo "<meta http-equiv = 'refresh' content='2 url=../Admin/Item_M.php' >";
+                if(isset($_POST['sub'])){
+            
+                echo '<script language="javascript">';
+                echo 'alert("Data sudah di simpan")';
+                echo '</script>';
 
+                
+               echo "<meta http-equiv = 'refresh' content='1 url=../Admin/Item_M.php' >";
+                }
             } else
-                echo "Data Tidak bisa di Simpan ! ";
+                echo '<script language="javascript">';
+                echo 'alert("Data Tidak bisa di simpan Mohon untuk Cek lagi datanya !")';
+                echo '</script>';
 
 
         }
