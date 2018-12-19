@@ -8,9 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="mainstyle.css">
+    
     <?php session_start(); ?>
-
- 
 
   </head>
   
@@ -21,6 +20,7 @@
         <tr>
           <td>
             <div id="LoginContent">
+              <H1 class="text-center" Style='color:#3385ff; text-shadow: 4px 3px 1px black;'>Bengkel Kita</H1>
               <form method="POST" action="">
                 <div class="form-group">
                   <h1 class="LabelLogin">Email address</h1>
@@ -95,8 +95,7 @@
 
   ?>
       
-  </body>
- 
+  </body> 
 </html>
 
 
