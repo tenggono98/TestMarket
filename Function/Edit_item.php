@@ -47,32 +47,56 @@
 
         <h1>Edit Item</h1>
 
-        <Label>Item ID</Label><br>
-        <input type="text" name="id" value="<?=$row['ItemID'];?>" disabled><br>
-        
-        <Label>Name</Label><br>
-        <input type="text" name="name" value="<?=$row['ItemName'];?>"><br>
-        
-        <Label>Stock</Label><br>
-        <input type="text" name="stock" value="<?=$row['ItemStock'];?>"><br>
-        
-        <Label>Price</Label><br>
-        <input type="text" name="price" value="<?=$row['ItemPrice'];?>"><br>
-        
-        <Label>Desc</Label><br>
-        <textarea cols=50 rows=5> <?=$row['ItemDescription'];?></textarea><br> 
-        <br>
-        <input type="submit" value="Submit" name="sub" >
-        <input type="submit" value="Back" name="back" >
-
-
-
+        <form action="" method="POST">
+            <Label>Item ID</Label><br>
+            <input type="text" name="id" value="<?=$row['ItemID'];?>" readonly><br>
+            
+            <Label>Name</Label><br>
+            <input type="text" name="name" value="<?=$row['ItemName'];?>"><br>
+            
+            <Label>Stock</Label><br>
+            <input type="text" name="stock" value="<?=$row['ItemStock'];?>"><br>
+            
+            <Label>Price</Label><br>
+            <input type="text" name="price" value="<?=$row['ItemPrice'];?>"><br>
+            
+            <Label>Desc</Label><br>
+            <textarea name ="desc"cols=50 rows=5> <?=$row['ItemDescription'];?></textarea><br> 
+            <br>
+            <input type="submit" value="Submit" name="sub" >
+            <input type="submit" value="Back" name="back" >
+        </form>
         </div>
 
     </Section>
 
     <?php
-        if()
+        if(isset($_POST['sub'])){
+
+        
+           
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $stock = $_POST['stock'];
+            $price = $_POST['price'];
+            $desc = $_POST['desc'];
+
+            $sql = "UPDATE ITEM SET ItemName='$name',ItemStock='$stock',ItemPrice = '$price',ItemDescription= '$desc' where  ItemID='$id' ";
+            $res = mysqli_query($con, $sql);
+
+            if ($res) {
+                echo "Data Berhasil di Update !";
+                echo "<meta http-equiv = 'refresh' content='2 url=../Admin/Item_M.php' >";
+
+            } else
+                echo "Data Tidak bisa di Simpan ! ";
+
+
+        }
+
+        if(isset($_POST['back'])){
+            Header("location:../Admin/Item_M.php");
+        }
 
     ?>
 
