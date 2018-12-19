@@ -6,7 +6,7 @@
         <title>Home Manager</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../MainStyle.css">
+        <link rel="stylesheet" href="../MainStyle.css"> 
         <script src="main.js"></script>
     </head>
     <body>
@@ -21,15 +21,50 @@
         
         ?>
         </Section>
+<!-- 
+        php atas gunanya buat jadi template -->
         
         <section Class="ContentHome_M">
         
-            <div Class="Content">
+            
 
                 <div  Class="container"  >
 
 
-                <h1>Profile</h1>
+                <center><h1>Profile</h1></center>
+
+                <?php
+                error_reporting(E_ALL ^ E_NOTICE);
+                error_reporting(E_ERROR | E_PARSE);
+                include "../Function/condb.php";
+                $id = $_SESSION['id'];
+
+                $sql = "SELECT * FROM STAFF";
+                $res= mysqli_query($con,$sql);
+                $row = mysqli_fetch_assoc($res);
+                ?>
+
+                <div class="text-center">
+                    <img src="../img/davatar.png" class="img-thumbnail" Style="width:240px">
+                    <h1><?= $row['StaffName']; ?></h1>
+                </div>
+                <hr>
+                <div Class="text-left">
+
+                <h3>Detail Profile</h3>
+                <h5>ID : <?= $row['StaffID']; ?></h5>
+                <h5></h5>
+                <h5></h5>
+                <h5></h5>
+                <h5></h5>
+                
+
+                
+
+
+
+
+                </div>
 
 
                 
@@ -43,7 +78,7 @@
 
             
 
-            </div>
+            
         
         
         

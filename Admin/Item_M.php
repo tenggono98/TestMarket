@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../mainstyle.css">
+    
 </head>
 <body>
 
@@ -32,7 +33,7 @@ require_once(HEADER);
         <hr>
 
         <div style=" padding-bottom:1%;">
-            <button ><a href="../Admin/Tambah_item.php">Tambah Item</a></button><br>
+            <button ><a href="../Function/Tambah_item.php">Tambah Item</a></button><br>
         </div>
         
 
@@ -69,7 +70,7 @@ require_once(HEADER);
                     <td><?= $row['ItemName'];?></td>
                     <td><?= $row['ItemDescription'];?></td>
                     <td><?= $row['ItemStock'];?></td>
-                    <td><?= $row['ItemPrice'];?></td>
+                    <td>Rp.<?= $row['ItemPrice'];?></td>
                     <td>
                     <button><a href="../Function/Edit_item.php?lel=<?=$row['ItemID']; ?>">Edit</a></button>
                     <button><a href="../Function/Del_item.php?lel=<?=$row['ItemID']; ?>">Delete</a></button>

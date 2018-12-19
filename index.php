@@ -57,6 +57,7 @@
     $pass = $row['StaffPassword'];
     $name = $row['StaffName'];
     $type = $row['STypeID'];
+    $id = $row['StaffID'];
 
     if ($inemail == "" && $inpass == "") {
       echo "Email Dan Password Harus di Isi !!";
@@ -65,6 +66,7 @@
       if ($inemail == $email && $inpass == $pass) {
         $_SESSION['name'] = $name;
         $_SESSION['type'] = $type;
+        $_SESSION['id'] = $id;
         if ($type == "TP001") {
           header('location:Admin/home_M.php');
         } else if ($type == "TP002") {
