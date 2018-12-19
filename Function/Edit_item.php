@@ -6,7 +6,7 @@
     <title>Edit Item</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <script src="../js/bootbox.min.js"></script>
 </head>
     <body>
 
@@ -70,7 +70,15 @@
 
     </Section>
 
+
+    <section>
+
+
+    
+    </section>
+
     <?php
+    
         if(isset($_POST['sub'])){
 
         
@@ -85,11 +93,12 @@
             $res = mysqli_query($con, $sql);
 
             if ($res) {
+                
                 echo '<script language="javascript">';
                 echo 'alert("Data Berhasil di Update !")';
                 echo '</script>';
 
-                echo "<meta http-equiv = 'refresh' content='2 url=../Admin/Item_M.php' >";
+                echo "<meta http-equiv = 'refresh' content='0 url=../Admin/Item_M.php' >";
 
             } else{
                 echo '<script language="javascript">';
@@ -110,7 +119,7 @@
     
     <?php
     error_reporting(E_ALL ^ E_NOTICE);
-
+    error_reporting(E_ERROR | E_PARSE);
     session_start();
 
     if ($username = $_SESSION['name']) {

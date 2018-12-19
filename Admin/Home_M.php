@@ -52,11 +52,19 @@
                 <hr>
                 <div Class="text-left">
 
+                <?php
+                $rankin =  $row['STypeID'];
+                $rank_r = str_replace("TP001",Manager,$rankin);
+                ?>
+
                 <h3>Detail Profile</h3>
+                <h5>Rank     : <?= $rank_r?> </h5>
                 <h5>ID      : <?= $row['StaffID']; ?></h5>
                 <h5>Number  : <?= $row['StaffPNumber']; ?></h5>
                 <h5>Email   : <?= $row['StaffEmail']; ?></h5>
                 <h5>DOB     : <?= $row['StaffDOB']; ?></h5>
+
+               
 
                 </div>
            

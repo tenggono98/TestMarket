@@ -14,7 +14,7 @@ if ($res) {
 	echo '<script language="javascript">';
 	echo 'alert("Data Sudah di Hapus !")';
 	echo '</script>';
-	echo "<meta http-equiv='refresh' content= '1 url=../Admin/item_M.php' >";
+	echo "<meta http-equiv='refresh' content= '0 url=../Admin/item_M.php' >";
 } else {
 	echo '<script language="javascript">';
 	echo 'alert("Data Tidak Bisa di hapus !")';

@@ -94,7 +94,7 @@
                 echo '</script>';
 
                 
-               echo "<meta http-equiv = 'refresh' content='1 url=../Admin/Item_M.php' >";
+               echo "<meta http-equiv = 'refresh' content='0 url=../Admin/Item_M.php' >";
                 }
             } else
                 echo '<script language="javascript">';
