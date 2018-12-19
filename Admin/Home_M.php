@@ -52,11 +52,11 @@
                 <div Class="text-left">
 
                 <h3>Detail Profile</h3>
-                <h5>ID : <?= $row['StaffID']; ?></h5>
-                <h5></h5>
-                <h5></h5>
-                <h5></h5>
-                <h5></h5>
+                <h5>ID      : <?= $row['StaffID']; ?></h5>
+                <h5>Number  : <?= $row['StaffPNumber']; ?></h5>
+                <h5>Email   : <?= $row['StaffEmail']; ?></h5>
+                <h5>DOB     : <?= $row['StaffDOB']; ?></h5>
+                
                 
 
                 
