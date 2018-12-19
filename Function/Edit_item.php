@@ -45,44 +45,36 @@
         
         <div class="container">
 
-        <h1>Edit Item</h1>
-
-        <form action="" method="POST">
-            <Label>Item ID</Label><br>
-            <input type="text" name="id" value="<?=$row['ItemID'];?>" readonly><br>
-            
-            <Label>Name</Label><br>
-            <input type="text" name="name" value="<?=$row['ItemName'];?>"><br>
-            
-            <Label>Stock</Label><br>
-            <input type="text" name="stock" value="<?=$row['ItemStock'];?>"><br>
-            
-            <Label>Price</Label><br>
-            <input type="text" name="price" value="<?=$row['ItemPrice'];?>"><br>
-            
-            <Label>Desc</Label><br>
-            <textarea name ="desc"cols=50 rows=5> <?=$row['ItemDescription'];?></textarea><br> 
-            <br>
-            <input type="submit" value="Submit" name="sub" >
-            <input type="submit" value="Back" name="back" >
-        </form>
+            <h1>Edit Item</h1>
+                <form action="" method="POST">
+                    <Label>Item ID</Label><br>
+                    <input type="text" name="id" value="<?=$row['ItemID'];?>" readonly><br>
+                    
+                    <Label>Name</Label><br>
+                    <input type="text" name="name" value="<?=$row['ItemName'];?>"><br>
+                    
+                    <Label>Stock</Label><br>
+                    <input type="text" name="stock" value="<?=$row['ItemStock'];?>"><br>
+                    
+                    <Label>Price</Label><br>
+                    <input type="text" name="price" value="<?=$row['ItemPrice'];?>"><br>
+                    
+                    <Label>Desc</Label><br>
+                    <textarea name ="desc"cols=50 rows=5> <?=$row['ItemDescription'];?></textarea><br> 
+                    <br>
+                    <input type="submit" value="Submit" name="sub" >
+                    <input type="submit" value="Back" name="back" >
+                </form>
         </div>
 
     </Section>
 
 
-    <section>
-
-
     
-    </section>
 
     <?php
     
         if(isset($_POST['sub'])){
-
-        
-           
             $id = $_POST['id'];
             $name = $_POST['name'];
             $stock = $_POST['stock'];
@@ -97,17 +89,12 @@
                 echo '<script language="javascript">';
                 echo 'alert("Data Berhasil di Update !")';
                 echo '</script>';
-
                 echo "<meta http-equiv = 'refresh' content='0 url=../Admin/Item_M.php' >";
-
             } else{
                 echo '<script language="javascript">';
                 echo 'alert("Data Tidak bisa di Edit !")';
                 echo '</script>';
             }
-           
-
-
         }
 
         if(isset($_POST['back'])){
@@ -116,21 +103,14 @@
 
     ?>
 
-    
-    <?php
-    error_reporting(E_ALL ^ E_NOTICE);
-    error_reporting(E_ERROR | E_PARSE);
-    session_start();
-
-    if ($username = $_SESSION['name']) {
-       
-
-    } else
-        header("location:../index.php");
-
-
-    ?>
-
-
     </body>
+        <?php
+        error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(E_ERROR | E_PARSE);
+        session_start();
+        if ($username = $_SESSION['name']) {
+        
+        } else
+            header("location:../index.php");
+        ?>
 </html>

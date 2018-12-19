@@ -37,77 +37,71 @@
 
     <section Class="ContentHome_M">
         
-            
-
-                <div  Class="container"  >
+      <div  Class="container" >
 
 
-                <center><h1>Profile</h1></center>
+        <center><h1>Profile</h1></center>
 
-                <?php
-                error_reporting(E_ALL ^ E_NOTICE);
-                error_reporting(E_ERROR | E_PARSE);
-                include "../Function/condb.php";
-                session_start();
-                $id = $_SESSION['id'];
+        <?php
+          error_reporting(E_ALL ^ E_NOTICE);
+          error_reporting(E_ERROR | E_PARSE);
+          include "../Function/condb.php";
+          session_start();
+          $id = $_SESSION['id'];
 
-                $sql = "SELECT * FROM STAFF where StaffID = '$id' ";
-                $res= mysqli_query($con,$sql);
-                $row = mysqli_fetch_assoc($res);
-                ?>
+          $sql = "SELECT * FROM STAFF where StaffID = '$id' ";
+          $res= mysqli_query($con,$sql);
+          $row = mysqli_fetch_assoc($res);
+        ?>
 
-                  <div class="text-center">
-                      <img src="../img/davatar.png" class="img-thumbnail" Style="width:240px">
-                      <h1><?= $row['StaffName']; ?></h1>
-                  </div>
-                  <hr>
-                  <div Class="text-left">
+        <div class="text-center">
+            <img src="../img/davatar.png" class="img-thumbnail" Style="width:240px">
+            <h1><?= $row['StaffName']; ?></h1>
+        </div>
+        <hr>
+        <div Class="text-left">
+          <?php
+            $rankin =  $row['STypeID'];
+            $rank_r = str_replace("TP002",Staff,$rankin);
+          ?>
 
-                  <?php
-                    $rankin =  $row['STypeID'];
-                    $rank_r = str_replace("TP002",Staff,$rankin);
-                  ?>
+          <h3>Detail Profile</h3>
+          <h5>Rank     : <?= $rank_r ?></h5>
+          <h5>ID      : <?= $row['StaffID']; ?></h5>
+          <h5>Number  : <?= $row['StaffPNumber']; ?></h5>
+          <h5>Email   : <?= $row['StaffEmail']; ?></h5>
+          <h5>DOB     : <?= $row['StaffDOB']; ?></h5>
+        </div>
 
-                  <h3>Detail Profile</h3>
-                  <h5>Rank     : <?= $rank_r ?></h5>
-                  <h5>ID      : <?= $row['StaffID']; ?></h5>
-                  <h5>Number  : <?= $row['StaffPNumber']; ?></h5>
-                  <h5>Email   : <?= $row['StaffEmail']; ?></h5>
-                  <h5>DOB     : <?= $row['StaffDOB']; ?></h5>
-                  
+      </div>
 
 
-                  </div>
-
-                </div>
-
-        
-        </section>
-
-    
-    
     </section>
 
-
-
-
-    <div class="content_index">
-
-
-    </div>
-
-
-    <div Class="footer">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container text-left">
-          <p>Create By .Alfonso Tenggono</p>
+    <section class="footer">
+      <div class="container pt-3">
+        <div Class="footer">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container text-left">
+              <p>Create By .Alfonso Tenggono</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    </div>
+    </section>
 
   </body>
+
+  <?php
+    error_reporting(E_ALL ^ E_NOTICE);  
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
+    if($user = $_SESSION['name']){
+       
+    }
+    else  
+        header('location:../index.php');
+    ?>
 
 </html>
 

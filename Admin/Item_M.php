@@ -27,18 +27,15 @@
 
             <div  Class="container"  >
 
-
             <h1>Item List</h1>
 
             <hr>
 
-            <div style=" padding-bottom:1%;">
+            <div Class="btn_top" style=" padding-bottom:1%;">
                 <button ><a href="../Function/Tambah_item.php">Tambah Item</a></button><br>
             </div>
             
 
-        
-            
 
             <table class="table table-hover table-bordered results" >
             <div class="form-group pull-right">
@@ -67,7 +64,6 @@
             While($row= mysqli_fetch_assoc($res)){
                     $no++
             ?>
-
                 <tbody>
                     <tr>
                         <td><?= $no?></td>
@@ -79,54 +75,63 @@
                         <td>
                         <button><a href="../Function/Edit_item.php?lel=<?=$row['ItemID']; ?>">Edit</a></button>
                         <button><a href="../Function/Del_item.php?lel=<?=$row['ItemID']; ?>">Delete</a></button>
-                        
-
                         </td>
-
                     </tr>
-
             <?php
-
             }
-
             ?>
-
                 </tbody>
             </table>
-            
         </div>
+
 
 
     </section>
 
-        
         <script>
-         $(document).ready(function() {
-         $(".search").keyup(function () {
-            var searchTerm = $(".search").val();
-            var listItem = $('.results tbody').children('tr');
-            var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-            
-        $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-                return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-            }
-        });
-            
-        $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-            $(this).attr('visible','false');
-        });
+            $(document).ready(function() {
+            $(".search").keyup(function () {
+                var searchTerm = $(".search").val();
+                var listItem = $('.results tbody').children('tr');
+                var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+                
+            $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                    return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                }
+            });
+                
+            $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','false');
+            });
 
-        $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-            $(this).attr('visible','true');
-        });
+            $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','true');
+            });
 
-        var jobCount = $('.results tbody tr[visible="true"]').length;
-            $('.counter').text(jobCount + ' item');
+            var jobCount = $('.results tbody tr[visible="true"]').length;
+                $('.counter').text(jobCount + ' item');
 
-        if(jobCount == '0') {$('.no-result').show();}
-            else {$('.no-result').hide();}
-                });
-        });
+            if(jobCount == '0') {$('.no-result').show();}
+                else {$('.no-result').hide();}
+                    });
+            });
         </script>
     </body>
+
+    <?php
+
+        session_start();
+
+
+
+        if($user = $_SESSION['name']){
+            if(!$type = $_SESSION['type'] == "TP001" ){
+                header('location:../Admin/Home_M.php');
+            }
+        }
+        else  
+            header('location:../index.php');
+
+
+    ?>
 </html>

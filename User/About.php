@@ -16,38 +16,33 @@
 
     <div class="header">
     
-    <?php
+        <?php
 
-    define("HEADER", "../content/header.php", false);
+        define("HEADER", "../content/header_user.php", false);
 
-    if (!file_exists(HEADER)) {
-        throw new Exception("file not Found. Path: " . header);
-    } else {
-        require_once(HEADER);
-    }
+        if (!file_exists(HEADER)) {
+            throw new Exception("file not Found. Path: " . header);
+        } else {
+            require_once(HEADER);
+        }
 
-    ?>
+        ?>
 
-  
     </div>
-  
-  
-  
-  <div class="content_index">
-
  
-  <div class="jumbotron jumbotron-fluid">
-        <div class="container text-center">
-            <img src="../img/davatar.png" class="rounded-circle" width="200" >
+    <div class="content_index">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container text-center">
+                <img src="../img/davatar.png" class="rounded-circle" width="200" >
 
-            <h1 class="display-4">Alfonso Tenggono</h1>
-            <p class="lead">Mahasiswa Sistem Informasi Binus University</p>
+                <h1 class="display-4">Alfonso Tenggono</h1>
+                <p class="lead">Mahasiswa Sistem Informasi Binus University</p>
+            </div>
         </div>
-    </div>
   </div>
   
 
-  <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col text-center">
             <h1>About</h1>
@@ -68,31 +63,34 @@
           </div>
 
       </div>
-
-</div>
-  
-  
-  <div Class="footer">
-
-  <div class="jumbotron jumbotron-fluid">
-        <div class="container text-left">
-            <p class="lead">By .Alfonso Tenggono</p>
-        </div>
     </div>
-  </div>
   
   
+
+    <section class="footer">
+      <div class="container pt-3">
+        <div Class="footer">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container text-left">
+              <p>Create By .Alfonso Tenggono</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   
-  </div>
-    
-
-
-
-  
-
-
-
-
    
   </body>
+
+  <?php
+
+    error_reporting(E_ALL ^ E_NOTICE);  
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
+    if($user = $_SESSION['name']){
+       
+    }
+    else  
+        header('location:../index.php');
+    ?>
 </html>

@@ -25,17 +25,14 @@ if ($res) {
 ?>
 
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
-
+error_reporting(E_ALL ^ E_NOTICE);  
+error_reporting(E_ERROR | E_PARSE);
 session_start();
-
 if ($username = $_SESSION['name']) {
    
 
 } else
 	header("location:../index.php");
-
-
 ?>
 
 

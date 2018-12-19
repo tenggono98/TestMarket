@@ -31,11 +31,10 @@
             <h1>Item List</h1>
 
             <hr>
-
-            <div style=" padding-bottom:1%;">
+            
+            <div Class="btn_top" style="padding-bottom:1%;">
                 <button ><a href="../Function/Tambah_item.php">Tambah Item</a></button><br>
             </div>
-                      
             
             <table class="table table-hover table-bordered results" >
                 <div class="form-group pull-right">
@@ -49,7 +48,6 @@
                     <th>Stock</th>
                     <th>Price</th>
                     <th>Control</th>
-
                 </thead>
                 <?php
 
@@ -62,7 +60,6 @@
                 While($row= mysqli_fetch_assoc($res)){
                         $no++
                 ?>
-
                 <tbody>
                     <tr>
                         <td><?= $no?></td>
@@ -74,23 +71,16 @@
                         <td>
                         <button><a href="../Function/Edit_item.php?lel=<?=$row['ItemID']; ?>">Edit</a></button>
                         <button><a href="../Function/Del_item.php?lel=<?=$row['ItemID']; ?>">Delete</a></button>
-                        
-
                         </td>
 
                     </tr>
 
-            <?php
-
-            }
-
-            ?>
-
+                <?php
+                }
+                ?>
                 </tbody>
-            </table>
-       
-            
-        </div>
+            </table> 
+        </>
 
     </section>
 
@@ -121,9 +111,18 @@
                 else {$('.no-result').hide();}
                     });
             });
-
-
             </script>
         
     </body>
+
+    <?php
+    error_reporting(E_ALL ^ E_NOTICE);  
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
+    if($user = $_SESSION['name']){
+       
+    }
+    else  
+        header('location:../index.php');
+    ?>
 </html>

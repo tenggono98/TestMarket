@@ -19,19 +19,19 @@
     <section class="LoginPage">
       <table Class="LoginBorder" cellpadding="50px">
         <tr>
-          <td >
+          <td>
             <div id="LoginContent">
               <form method="POST" action="">
                 <div class="form-group">
                   <h1 class="LabelLogin">Email address</h1>
-                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                   <h1 class="LabelLogin">Password</h1>
-                  <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <button type="submit" name="btn" class="btn btn-primary">Login</button>
-                </form>
+              </form>
             </div>
           </td>
         </tr>
@@ -96,6 +96,7 @@
   ?>
       
   </body>
+ 
 </html>
 
 
