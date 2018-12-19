@@ -53,8 +53,8 @@
                 <div Class="text-left">
 
                 <?php
-                $rankin =  $row['STypeID'];
-                $rank_r = str_replace("TP001",Manager,$rankin);
+                    $rankin =  $row['STypeID'];
+                    $rank_r = str_replace("TP001",Manager,$rankin);
                 ?>
 
                 <h3>Detail Profile</h3>

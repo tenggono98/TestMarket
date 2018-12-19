@@ -44,8 +44,6 @@
             <div class="form-group pull-right">
                 <input type="text" class="search form-control" placeholder="What you looking for?">
             </div>
-            <!-- <i class="fa fa-search" aria-hidden="true"></i>
-            <input class="search form-control" id="myInput"  onkeyup="myFunction()" type="text" placeholder="Search" aria-label="Search"> -->
             <br>
                 <thead>
                     <th>No</th>
