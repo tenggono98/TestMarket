@@ -95,18 +95,8 @@
 
                 </tbody>
             </table>
-
-
-            
-            
             
         </div>
-
-
-        
-
-    
-
 
 
     </section>

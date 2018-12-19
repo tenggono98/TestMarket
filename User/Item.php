@@ -35,12 +35,8 @@
             <div style=" padding-bottom:1%;">
                 <button ><a href="../Function/Tambah_item.php">Tambah Item</a></button><br>
             </div>
+                      
             
-
-        
-            
-        
-            <table class="table">
             <table class="table table-hover table-bordered results" >
                 <div class="form-group pull-right">
                     <input type="text" class="search form-control" placeholder="What you looking for?">
@@ -57,15 +53,15 @@
                 </thead>
                 <?php
 
-            include "../Function/condb.php";
+                include "../Function/condb.php";
 
-            $sql = "Select * from item";
-            $res = mysqli_query($con,$sql);
-            $no=0;
+                $sql = "Select * from item";
+                $res = mysqli_query($con,$sql);
+                $no=0;
 
-            While($row= mysqli_fetch_assoc($res)){
-                    $no++
-                    ?>
+                While($row= mysqli_fetch_assoc($res)){
+                        $no++
+                ?>
 
                 <tbody>
                     <tr>
