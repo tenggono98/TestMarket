@@ -15,7 +15,7 @@
 
         <?php
         
-        define("HEADER","../content/header_admin.php",false);
+        define("HEADER","../content/header.php",false);
 
         require_once(HEADER);
         
@@ -29,10 +29,7 @@
                 <div  Class="container"  >
 
 
-                <h1>Profile</h1>
-
-
-                
+                <a href=""></a>
 
 
                 

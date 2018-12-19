@@ -26,7 +26,7 @@
                 <a class="nav-link" href="../user/Home.php">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Inventory</a>
+                <a class="nav-link" href="../user/item.php">Inventory</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Work Order</a>

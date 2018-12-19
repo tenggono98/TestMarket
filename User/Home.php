@@ -21,7 +21,7 @@
 
       <?php
 
-      define("HEADER", "../content/header.php", false);
+      define("HEADER", "../content/header_user.php", false);
 
       if (!file_exists(HEADER)) {
         throw new Exception("file not Found. Path: " . header);

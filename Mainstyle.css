@@ -29,3 +29,33 @@
      color: steelblue;
      text-shadow: 4px 3px 1px black;
  }
+
+ /* admin home */
+
+
+ .ContentHome_M{
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 2%;
+    background-color: cornflowerblue;
+ }
+
+ /* admin item */
+
+ .Contentitem_M{
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 2%;
+    background-color:white;
+ }
+/* admin edit item */
+
+.ContentEdit{
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 2%;
+    background-color:white;
+ }
