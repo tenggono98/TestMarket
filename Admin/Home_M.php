@@ -21,8 +21,8 @@
         
         ?>
         </Section>
-<!-- 
-        php atas gunanya buat jadi template -->
+ 
+       <!--php atas gunanya buat jadi template -->
         
         <section Class="ContentHome_M">
         
@@ -36,10 +36,11 @@
                 <?php
                 error_reporting(E_ALL ^ E_NOTICE);
                 error_reporting(E_ERROR | E_PARSE);
+                session_start();
                 include "../Function/condb.php";
                 $id = $_SESSION['id'];
 
-                $sql = "SELECT * FROM STAFF";
+                $sql = "SELECT * FROM STAFF where StaffID = '$id'";
                 $res= mysqli_query($con,$sql);
                 $row = mysqli_fetch_assoc($res);
                 ?>
@@ -56,32 +57,12 @@
                 <h5>Number  : <?= $row['StaffPNumber']; ?></h5>
                 <h5>Email   : <?= $row['StaffEmail']; ?></h5>
                 <h5>DOB     : <?= $row['StaffDOB']; ?></h5>
-                
-                
-
-                
-
-
-
 
                 </div>
+           
+            </div>
 
-
-                
-
-
-                
-                
-                
-                </div>
-
-
-            
-
-            
-        
-        
-        
+       
         </section>
 
         

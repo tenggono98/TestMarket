@@ -64,13 +64,17 @@
     } else {
 
       if ($inemail == $email && $inpass == $pass) {
-        $_SESSION['name'] = $name;
-        $_SESSION['type'] = $type;
-        $_SESSION['id'] = $id;
+       
         
         if ($type == "TP001") {
+          $_SESSION['name'] = $name;
+          $_SESSION['type'] = $type;
+          $_SESSION['id'] = $id;
           header('location:Admin/home_M.php');
         } else if ($type == "TP002") {
+          $_SESSION['name'] = $name;
+          $_SESSION['type'] = $type;
+          $_SESSION['id'] = $id;
           header('location:User/home.php');
         }
 

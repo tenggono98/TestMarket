@@ -32,9 +32,6 @@
                 <a class="nav-link" href="#">Work Order</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Staff</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Customer</a>
             </li>
             <li class="nav-item">
