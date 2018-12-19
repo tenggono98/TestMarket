@@ -117,10 +117,7 @@
     session_start();
 
     if ($username = $_SESSION['name']) {
-        if(!$type = $_SESSION['type'] == "TP001" ){
-            header('location:../user/home.php');
-        }
-
+        
     } else
         header("location:../index.php");
 
