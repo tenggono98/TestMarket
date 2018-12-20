@@ -53,6 +53,15 @@
      background-color: white;
  }
 
+ /* admin Staff */
+ .ContentStaff_M {
+     margin-top: 4%;
+     margin-left: 20%;
+     margin-right: 20%;
+     padding-bottom: 2%;
+     background-color: white;
+ }
+
  .results tr[visible='false'],
  .no-result {
      display: none;
@@ -70,6 +79,23 @@
  /* admin edit item */
 
  .ContentEdit {
+     margin-top: 4%;
+     margin-left: 20%;
+     margin-right: 20%;
+     padding-bottom: 2%;
+     background-color: white;
+ }
+
+ .ContentEdit_staff {
+     margin-top: 4%;
+     margin-left: 20%;
+     margin-right: 20%;
+     padding-bottom: 2%;
+     background-color: white;
+ }
+
+ /* admin Tambah Staff */
+ .ContentTambah_Staff {
      margin-top: 4%;
      margin-left: 20%;
      margin-right: 20%;

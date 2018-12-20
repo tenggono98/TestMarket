@@ -32,7 +32,7 @@
                 <a class="nav-link" href="#">Work Order</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Staff</a>
+                <a class="nav-link" href="../Admin/Staff_M.php">Staff</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Customer</a>
