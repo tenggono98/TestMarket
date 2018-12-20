@@ -55,7 +55,7 @@
         ?>
 
         <div class="text-center">
-            <img src="../img/davatar.png" class="img-thumbnail" Style="width:240px">
+            <img src="../img/staff_pic/<?= $row['img'];?>" class="img-thumbnail" Style="width:240px">
             <h1><?= $row['StaffName']; ?></h1>
         </div>
         <hr>
