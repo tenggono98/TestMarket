@@ -92,8 +92,22 @@
     }
 
   }
-
   ?>
+
+<?php
+		error_reporting(E_ALL ^ E_NOTICE);
+		if ($username = $_SESSION['name']) {
+      if ($type == "TP001") {
+        $_SESSION['name'] = $name;
+        header('location:Admin/home_M.php');
+      } else if ($type == "TP002") {
+        $_SESSION['name'] = $name;
+        header('location:User/home.php');
+      }
+		} else {
+
+		}
+	?>
       
   </body> 
 </html>

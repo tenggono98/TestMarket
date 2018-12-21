@@ -30,16 +30,19 @@
         $inID= $_GET[lel];
         
         include "../Function/condb.php";
+        include "../Function/autogen_allid.php";
 
         $sql = "Select ItemID,ItemName,ItemStock,ItemPrice,ItemDescription FROM item where ItemID = '$inID' ";
         $res = mysqli_query($con,$sql);
         $row = mysqli_fetch_assoc($res);
+        $autoiditem = autogen_itemid();
+
         ?>
         <div class="container">
             <h1>Tambah Item</h1>
                 <form action="" method="POST">
                     <Label>Item ID</Label><br>
-                    <input type="text" name="id"><br>
+                    <input type="text" name="id" value="<?= $autoiditem ?>" readonly><br>
                     
                     <Label>Name</Label><br>
                     <input type="text" name="name" ><br>

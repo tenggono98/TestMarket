@@ -22,14 +22,17 @@
     ?>
 
     </Section>
-
+    <?php
+    include "../Function/autogen_allid.php";
+    $autoidstaff = autogen_staffid();
+    ?>
     <Section Class="ContentTambah_Staff">
        
         <div class="container">
             <h1>Tambah Staff</h1>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <Label >Staff ID</Label><br>
-                    <input type="text" name="id"><br>
+                    <input type="text" name="id" value="<?=$autoidstaff?>" readonly><br>
                     
                     <Label >Staff Type</Label><br>
                     <Select name="type">
@@ -61,7 +64,7 @@
     
                     <br>
                     <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >
-                    <input type="submit" value="Back" name="back" >
+                   
                 </form>
         </div>
     </Section>
@@ -112,9 +115,7 @@
                 echo '</script>';
         }
 
-        if(isset($_POST['back'])){
-            Header("location:../Admin/Staff_M.php");
-        }
+       
 
         function upload(){
             $namefile = $_FILES['pic']['name'];
