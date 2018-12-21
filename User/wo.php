@@ -49,20 +49,20 @@
             <br>
             <label >Customer Email </label><br>
             <input type="email" name="name" ><br>
-
+            <br>
             <label>Type Vehicle</label><br>
-            <Select name="type"><br>
+            <Select name="type">
                 <option value="VT001">Car</option>
                 <option value="VT002">Motorcycle</option>
-            </Select>
-
-            
-
-
-            
-            
+            </Select><br>
+            <br>
+            <label>Vehicle Note</label><br>
+            <input type="text" name="problem" ><br>
+            <br>
+            <label>Desc Problem</label><br>
+            <textarea name="problem" placeholder="Desc The problem"></textarea><br>
            
-
+            <br>
             <table class="table table-hover table-bordered results" >
             <div class="form-group pull-right">
                 <input type="text" class="search form-control" placeholder="What you looking for?">
@@ -99,8 +99,16 @@
                         <td><?= $row['ItemStock'];?></td>
                         <td>Rp.<?= $row['ItemPrice'];?></td>
                         <td>
-                        <button><a href="../Function/Edit_item.php?lel=<?=$row['ItemID']; ?>">Edit</a></button>
-                        <button><a href="../Function/Del_item.php?lel=<?=$row['ItemID']; ?>">Delete</a></button>
+                        <form action="" method="POST">
+                        <input type="number" placeholder="Qty" name="qty" style="width:70px; ">
+                        </form>
+                        <?php 
+                        error_reporting(E_ALL ^ E_NOTICE);  
+                        error_reporting(E_ERROR | E_PARSE);
+                        $total = $_POST['qty'];
+                        echo var_dump($total);
+                        ?>
+                        <button><a href="../user/wo.php?lel=<?=$row['ItemID']; ?>&qty=<?=$total?>">Add</a></button>
                         </td>
                     </tr>
             <?php
@@ -148,7 +156,7 @@
         error_reporting(E_ALL ^ E_NOTICE);  
         error_reporting(E_ERROR | E_PARSE);
         session_start();
-        session_start();
+        
         if($user = $_SESSION['name']){
             if(!$type = $_SESSION['type'] == "TP001" ){
                 header('location:../Admin/Home_M.php');
