@@ -30,5 +30,16 @@ function autogen_staffid()
    
 }
 
+function autogen_cusid(){
+            include "../function/condb.php";
+            $sql = "SELECT CustomerID FROM customer ORDER BY CustomerID DESC LIMIT 1 ";
+            $res = mysqli_query($con,$sql);
+            $row = mysqli_fetch_array($res);
+            $cusidnew = $row['CustomerID'];
+            $cusidnew++;
 
+            return $cusidnew;
+
+
+        }
 ?>
