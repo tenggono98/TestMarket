@@ -1,4 +1,6 @@
 <?php
+    error_reporting(E_ALL ^ E_NOTICE);  
+    error_reporting(E_ERROR | E_PARSE);
     session_start();
      $type= $_SESSION['type'];
      
@@ -25,7 +27,7 @@
     <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="mainstyle.css">
     
-    <?php session_start(); ?>
+    
 
   </head>
   

@@ -40,8 +40,8 @@
                 $row = mysqli_fetch_assoc($res);
                 ?>
 
-                <div class="text-center">
-                    <img src="../img/staff_pic/<?= $row['img'];?>" class="img-thumbnail" Style="width:240px">
+                <div class="text-center img-circle">
+                    <img src="../img/staff_pic/<?= $row['img'];?>" Class="rounded" Style="width:240px; clip-path: circle(48.8% at 50% 50%);">
                     <h1><?= $row['StaffName']; ?></h1>
                 </div>
                 <hr>

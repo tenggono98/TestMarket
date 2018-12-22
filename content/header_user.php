@@ -38,7 +38,7 @@
                 <a class="nav-link" href="../user/About.php">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../index.php">Logout</a>
+                <a class="nav-link" href="../function/clear.php">Logout</a>
             </li>
             
         </ul>

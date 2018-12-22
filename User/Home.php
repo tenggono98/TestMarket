@@ -55,7 +55,7 @@
         ?>
 
         <div class="text-center">
-            <img src="../img/staff_pic/<?= $row['img'];?>" class="img-thumbnail" Style="width:240px">
+            <img src="../img/staff_pic/<?= $row['img'];?>" Class="rounded" Style="width:240px; clip-path: circle(40% at 50% 50%);">
             <h1><?= $row['StaffName']; ?></h1>
         </div>
         <hr>
