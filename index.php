@@ -1,3 +1,19 @@
+<?php
+    session_start();
+     $type= $_SESSION['type'];
+     $user = $_SESSION[''];
+		if ( $username = $_SESSION['name'] ) {
+      if ($type == "TP001") {
+        header("location:Admin/home_M.php");
+      } else if ($type == "TP002") {
+        header("location:User/home.php");
+      }
+		} else {
+
+		}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -42,7 +58,7 @@
   <?php
 
   if (isset($_POST['btn'])) {
-
+    
     include "Function/condb.php";
 
     $inemail = $_POST['email'];
@@ -94,20 +110,9 @@
   }
   ?>
 
-<?php
-		error_reporting(E_ALL ^ E_NOTICE);
-		if ($username = $_SESSION['name']) {
-      if ($type == "TP001") {
-        $_SESSION['name'] = $name;
-        header('location:Admin/home_M.php');
-      } else if ($type == "TP002") {
-        $_SESSION['name'] = $name;
-        header('location:User/home.php');
-      }
-		} else {
 
-		}
-	?>
+
+
       
   </body> 
 </html>

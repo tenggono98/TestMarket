@@ -1,7 +1,10 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Inventory</title>
+    <title>Work Order</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,10 +17,20 @@
     <Section class="Header">
 
     <?php
+    session_start();
+    define("HEADER_admin","../content/header_admin.php",false);
+    define("HEADER_user","../content/header_user.php",false);
+    $headerin = $_SESSION['type'];
+    if($headerin == "TP001"){
+   
+    require_once(HEADER_admin);
+    echo "admin";
+    }else if($headerin == "TP002"){
 
-    define("HEADER","../content/header_admin.php",false);
+        require_once(HEADER_user);
+        echo "user";
+    }
 
-    require_once(HEADER);
 
     ?>
     </Section>
@@ -31,125 +44,103 @@
 
             <hr>
 
-            <h5>Select Customer Code</h5>
-
             <?php
-            
-            include "../function/autogen_allid.php";
-            $autocusid = autogen_cusid();      
-            ?>
-            <label >ID Customer </label><br>
-            <input type="text" value="<?= $autocusid ?>" readonly><br>
-            <br>
-            <label >Customer Name </label><br>
-            <input type="text" name="name" ><br>
-            <br>
-            <label >Customer Phone Number</label><br>
-            <input type="number" name="name" ><br>
-            <br>
-            <label >Customer Email </label><br>
-            <input type="email" name="name" ><br>
-            <br>
-            <label>Type Vehicle</label><br>
-            <Select name="type">
-                <option value="VT001">Car</option>
-                <option value="VT002">Motorcycle</option>
-            </Select><br>
-            <br>
-            <label>Vehicle Note</label><br>
-            <input type="text" name="problem" ><br>
-            <br>
-            <label>Desc Problem</label><br>
-            <textarea name="problem" placeholder="Desc The problem"></textarea><br>
-           
-            <br>
-            <table class="table table-hover table-bordered results" >
-            <div class="form-group pull-right">
-                <input type="text" class="search form-control" placeholder="What you looking for?">
-            </div>
-            <br>
-                <thead>
-                    <th>No</th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>desc</th>
-                    <th>Stock</th>
-                    <th>Price</th>
-                    <th>Control</th>
-
-                </thead>
-            
-            <?php
-
-            include "../Function/condb.php";
-
-            $sql = "Select * from item";
+            include "../function/condb.php";
+            $sql = "SELECT CustomerID FROM customer  ";
             $res = mysqli_query($con,$sql);
-            $no=0;
+            
+           
+           ?>
 
-            While($row= mysqli_fetch_assoc($res)){
-                    $no++
-            ?>
-                <tbody>
-                    <tr>
-                        <td><?= $no?></td>
-                        <td><?= $row['ItemID'];?></td>
-                        <td><?= $row['ItemName'];?></td>
-                        <td><?= $row['ItemDescription'];?></td>
-                        <td><?= $row['ItemStock'];?></td>
-                        <td>Rp.<?= $row['ItemPrice'];?></td>
-                        <td>
-                        <form action="" method="POST">
-                        <input type="number" placeholder="Qty" name="qty" style="width:70px; ">
-                        </form>
-                        <?php 
-                        error_reporting(E_ALL ^ E_NOTICE);  
-                        error_reporting(E_ERROR | E_PARSE);
-                        $total = $_POST['qty'];
-                        echo var_dump($total);
-                        ?>
-                        <button><a href="../user/wo.php?lel=<?=$row['ItemID']; ?>&qty=<?=$total?>">Add</a></button>
-                        </td>
-                    </tr>
-            <?php
+            <h5>Select Customer Code</h5>
+            
+            <label >ID Customer </label><br>
+     
+
+            <form action="" method="POST">
+            <?php 
+            include "../function/autogen_allid.php"; 
+            $autogenidvec = autogen_vehicleid();
+            $autogenidwo = autogen_woid();
+            $datenow =  date("Y/m/d");
+            $idstaff= $_SESSION['id'];
+            
+            echo "<select name='cusid'>";
+            while($row = mysqli_fetch_array($res)){
+                echo '<option value="'.$row['CustomerID'].'">'.$row['CustomerID'].'</option>';
+                
             }
+            echo "</select>";
+    
+            
             ?>
-                </tbody>
-            </table>
-        </div>
-
-
-
+            <br>
+                <label>WO ID</label><br>
+                <input type="text" name="idwo" value="<?=$autogenidwo?>"  readonly><br>
+                <br>
+                <label>Vehicle ID</label><br>
+                <input type="text" name="id" value="<?=$autogenidvec?>"  readonly><br>
+                <br>
+                <label>Type Vehicle</label><br>
+                <Select name="type">
+                    <option value="VT001">Car</option>
+                    <option value="VT002">Motorcycle</option>
+                </Select><br>
+                <br>
+                <label>Vehicle Note</label><br>
+                <textarea name="note" placeholder="Vehicle Notes"></textarea><br>
+                <br>
+                <label>Order Desc</label><br>
+                <textarea name="desc" placeholder="Desc Of Order"></textarea><br>
+                <input type="hidden" name="date" value="<?= $datenow ?>">
+                <input type="submit" name="btn" value="Submit">
+            </form> 
+    </div>
     </section>
 
-        <script>
-            $(document).ready(function() {
-            $(".search").keyup(function () {
-                var searchTerm = $(".search").val();
-                var listItem = $('.results tbody').children('tr');
-                var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+        <?php
+        if(isset($_POST['btn'])){
+
+        include "../function/condb.php";
+        $woid = $_POST['idwo'];
+        $vecid = $_POST['id'];
+        $cusid = $_POST['cusid'];
+        $vectype = $_POST['type'];
+        $vecnote = $_POST['note'];
+        $descorder = $_POST['desc'];
+        $datenow = $_POST['date'];
+
+        $sqlvehicle = "INSERT INTO vehicle(VehicleID,CustomerID,VTypeID,Notes) VALUES('$vecid','$cusid','$vectype','$vecnote')";
+        $sqldetail = "INSERT INTO wo_detail(StaffID,WOID) VALUES ('$idstaff','$woid')";
+        $sqlwo = "INSERT INTO work_order(WOID,VehicleID,WODateTime,OrderDescription) VALUES('$woid','$vecid','$datenow','$descorder')";
+        $res1 = mysqli_query($con,$sqlvehicle);
+        $res2  = mysqli_query($con,$sqldetail);
+        $res3= mysqli_query($con,$sqlwo);
+        
+            if($res1){
                 
-            $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-                    return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                if($res2){
+                    
+                    if($res3){
+                        echo "
+                    <script>
+                        alert('Wo dan Vehicle Data Berhasil di Simpan');
+                    </script>
+                ";
+                    }
                 }
-            });
-                
-            $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-                $(this).attr('visible','false');
-            });
-
-            $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-                $(this).attr('visible','true');
-            });
-
-            var jobCount = $('.results tbody tr[visible="true"]').length;
-                $('.counter').text(jobCount + ' item');
-
-            if(jobCount == '0') {$('.no-result').show();}
-                else {$('.no-result').hide();}
-                    });
-            });
-        </script>
+            }
+            else{
+                echo "
+                <script>
+                    alert('Wo dan Vehicle Data gaggal di Simpan');
+                </script>
+                ";
+            }
+        
+    }
+        ?>
+        
     </body>
 
     <?php

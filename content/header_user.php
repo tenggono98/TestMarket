@@ -29,10 +29,10 @@
                 <a class="nav-link" href="../user/item.php">Inventory</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Work Order</a>
+                <a class="nav-link" href="../user/Wo.php">Work Order</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Customer</a>
+                <a class="nav-link" href="../user/customer.php">Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../user/About.php">About</a>
@@ -46,7 +46,7 @@
     </div>
     </nav>
 </section>
-  
+
 
 
   <!-- Optional JavaScript -->

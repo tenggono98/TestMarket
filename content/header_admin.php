@@ -1,8 +1,4 @@
 
-<?php 
-
-?>
-
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
@@ -10,6 +6,7 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../Mainstyle.css">
+
 
 
 
@@ -29,13 +26,13 @@
                 <a class="nav-link" href="../Admin/item_M.php">Inventory</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Work Order</a>
+                <a class="nav-link" href="../user/Wo.php">Work Order</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../Admin/Staff_M.php">Staff</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Customer</a>
+                <a class="nav-link" href="../user/customer.php">Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../user/About.php">About</a>
