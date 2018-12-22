@@ -117,10 +117,8 @@
         $res2  = mysqli_query($con,$sqldetail);
         $res3= mysqli_query($con,$sqlwo);
         
-            if($res1){
-                
+            if($res1){               
                 if($res2){
-                    
                     if($res3){
                         echo "
                     <script>

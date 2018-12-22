@@ -1,7 +1,7 @@
 <?php
     session_start();
      $type= $_SESSION['type'];
-     $user = $_SESSION[''];
+     
 		if ( $username = $_SESSION['name'] ) {
       if ($type == "TP001") {
         header("location:Admin/home_M.php");
