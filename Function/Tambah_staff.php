@@ -100,10 +100,6 @@
 
             if ($res) {
                 if(isset($_POST['sub'])){
-                
-                
-                
-            
                 echo '  <script language="javascript">;
                             alert("Data sudah di simpan");
                         </script>';
