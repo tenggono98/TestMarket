@@ -55,7 +55,7 @@
         ?>
 
         <div class="text-center">
-            <img src="../img/staff_pic/<?= $row['img'];?>" Class="rounded" Style="width:240px; clip-path: circle(40% at 50% 50%);">
+            <img src="../img/staff_pic/<?= $row['img'];?>" class="rounded-circle" width="220" height="200">
             <h1><?= $row['StaffName']; ?></h1>
         </div>
         <hr>
@@ -97,7 +97,9 @@
     error_reporting(E_ERROR | E_PARSE);
     session_start();
     if($user = $_SESSION['name']){
-       
+       if($type = $_SESSION['type'] == "TP001"){
+         header('location:../admin/home_M.php');
+       }
     }
     else  
         header('location:../index.php');

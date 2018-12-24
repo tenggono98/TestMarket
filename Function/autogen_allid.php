@@ -99,4 +99,42 @@ function autogen_cusid(){
 
 
         }
+
+        function autogen_vendorid(){
+            include "../function/condb.php";
+            $sql = "SELECT VendorID FROM Vendor ORDER BY VendorID DESC LIMIT 1 ";
+            $res = mysqli_query($con,$sql);
+            $row = mysqli_fetch_array($res);
+            
+            if($data = $row['VendorID'] == ""){
+                $data = "VD000";
+                $data++;
+            }else{
+                $data = $row['VendorID']; 
+                $data++;
+            }
+
+            return $data;
+
+
+        }
+
+        function autogen_pid(){
+            include "../function/condb.php";
+            $sql = "SELECT PurchaseID FROM purchase_header ORDER BY PurchaseID DESC LIMIT 1 ";
+            $res = mysqli_query($con,$sql);
+            $row = mysqli_fetch_array($res);
+            
+            if($data = $row['PurchaseID'] == ""){
+                $data = "PC000";
+                $data++;
+            }else{
+                $data = $row['PurchaseID']; 
+                $data++;
+            }
+
+            return $data;
+
+
+        }
 ?>

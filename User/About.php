@@ -16,17 +16,21 @@
 
     <div class="header">
     
-        <?php
+    <?php
+    session_start();
+    define("HEADER_admin","../content/header_admin.php",false);
+    define("HEADER_user","../content/header_user.php",false);
+    $headerin = $_SESSION['type'];
+    if($headerin == "TP001"){
+   
+    require_once(HEADER_admin);
+    echo "admin";
+    }else if($headerin == "TP002"){
 
-        define("HEADER", "../content/header_user.php", false);
-
-        if (!file_exists(HEADER)) {
-            throw new Exception("file not Found. Path: " . header);
-        } else {
-            require_once(HEADER);
-        }
-
-        ?>
+        require_once(HEADER_user);
+        echo "user";
+    }
+    ?>
 
     </div>
  

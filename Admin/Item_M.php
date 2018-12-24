@@ -14,6 +14,13 @@
     <Section class="Header">
 
     <?php
+    error_reporting(E_ALL ^ E_NOTICE);  
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
+     include "../Function/autogen_allid.php";
+     unset($_SESSION['pids']);
+     $autopid= autogen_pid();
+    
 
     define("HEADER","../content/header_admin.php",false);
 
@@ -32,7 +39,7 @@
             <hr>
 
             <div Class="btn_top" style=" padding-bottom:1%;">
-                <button ><a href="../Function/Tambah_item.php">Tambah Item</a></button><br>
+                <button ><a href="../Function/Tambah_item.php?lel=<?=$autopid?>">Tambah Item</a></button><br>
             </div>
 
             <table class="table table-hover table-bordered results" >
@@ -69,7 +76,7 @@
                         <td><?= $row['ItemName'];?></td>
                         <td><?= $row['ItemDescription'];?></td>
                         <td><?= $row['ItemStock'];?></td>
-                        <td>Rp.<?= $row['ItemPrice'];?></td>
+                        <td>Rp.<?= number_format($row['ItemPrice'], 2);?></td>
                         <td>
                         <button><a href="../Function/Edit_item.php?lel=<?=$row['ItemID']; ?>">Edit</a></button>
                         <button><a href="../Function/Del_item.php?lel=<?=$row['ItemID']; ?>">Delete</a></button>
@@ -119,8 +126,8 @@
     <?php
         error_reporting(E_ALL ^ E_NOTICE);  
         error_reporting(E_ERROR | E_PARSE);
-        session_start();
-        session_start();
+        
+       
         if($user = $_SESSION['name']){
             if(!$type = $_SESSION['type'] == "TP001" ){
                 header('location:../Admin/Home_M.php');

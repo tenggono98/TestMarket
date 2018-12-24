@@ -84,7 +84,7 @@
                         <td><?= $row['StaffPNumber'];?></td>
                         <td><?= $row['StaffEmail'];?></td>
                         <td><?= $row['StaffDOB'];?></td>
-                        <td>Rp.<?= $row['StaffSalary'];?></td>
+                        <td>Rp.<?= number_format($row['StaffSalary'], 2);?></td>
                         <td>
                         <button><a href="../Function/Edit_staff.php?lel=<?=$row['StaffID']; ?>">Edit</a></button>
                         <button><a href="../Function/Del_staff.php?lel=<?=$row['StaffID']; ?>">Delete</a></button>

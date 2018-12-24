@@ -114,19 +114,15 @@
         $sqldetail = "INSERT INTO wo_detail(StaffID,WOID) VALUES ('$idstaff','$woid')";
         $sqlwo = "INSERT INTO work_order(WOID,VehicleID,WODateTime,OrderDescription) VALUES('$woid','$vecid','$datenow','$descorder')";
         $res1 = mysqli_query($con,$sqlvehicle);
-        $res2  = mysqli_query($con,$sqldetail);
-        $res3= mysqli_query($con,$sqlwo);
+        $res1  = mysqli_query($con,$sqldetail);
+        $res1= mysqli_query($con,$sqlwo);
         
             if($res1){               
-                if($res2){
-                    if($res3){
-                        echo "
-                    <script>
-                        alert('Wo dan Vehicle Data Berhasil di Simpan');
-                    </script>
-                ";
-                    }
-                }
+                echo "
+                <script>
+                    alert('Wo dan Vehicle Data Berhasil di Simpan');
+                </script>
+            ";
             }
             else{
                 echo "
