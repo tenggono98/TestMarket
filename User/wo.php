@@ -1,10 +1,7 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Work Order</title>
+    <title>Inventory</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,8 +27,6 @@
         require_once(HEADER_user);
         echo "user";
     }
-
-
     ?>
     </Section>
 
@@ -40,116 +35,100 @@
 
             <div  Class="container"  >
 
-            <h1>Work Order</h1>
+
+            <h1>Work Order List</h1>
 
             <hr>
+            
+            <div Class="btn_top" style="padding-bottom:1%;">
+                <button ><a href="../Function/Tambah_wo.php">Tambah Work Order</a></button><br>
+            </div>
+            
+            <table class="table table-hover table-bordered results" >
+                <div class="form-group pull-right">
+                    <input type="text" class="search form-control" placeholder="What you looking for?">
+                </div>
+                <thead>
+                    <th>No</th>
+                    <th>Work Order ID</th>
+                    <th>VehicleID</th>
+                    <th>Word Order Date</th>
+                    <th>Order Desc</th>
+                    <th>Control</th>
+                </thead>
+                <?php
 
-            <?php
-            include "../function/condb.php";
-            $sql = "SELECT CustomerID FROM customer  ";
-            $res = mysqli_query($con,$sql);
-            
-           
-           ?>
+                include "../Function/condb.php";
 
-            <h5>Select Customer Code</h5>
-            
-            <label >ID Customer </label><br>
-     
+                $sql = "Select * from Work_order Order by WOID desc";
+                $res = mysqli_query($con,$sql);
+                $no=0;
 
-            <form action="" method="POST">
-            <?php 
-            include "../function/autogen_allid.php"; 
-            $autogenidvec = autogen_vehicleid();
-            $autogenidwo = autogen_woid();
-            $datenow =  date("Y/m/d");
-            $idstaff= $_SESSION['id'];
-            
-            echo "<select name='cusid'>";
-            while($row = mysqli_fetch_array($res)){
-                echo '<option value="'.$row['CustomerID'].'">'.$row['CustomerID'].'</option>';
-                
-            }
-            echo "</select>";
-    
-            
-            ?>
-            <br>
-                <label>WO ID</label><br>
-                <input type="text" name="idwo" value="<?=$autogenidwo?>"  readonly><br>
-                <br>
-                <label>Vehicle ID</label><br>
-                <input type="text" name="id" value="<?=$autogenidvec?>"  readonly><br>
-                <br>
-                <label>Type Vehicle</label><br>
-                <Select name="type">
-                    <option value="VT001">Car</option>
-                    <option value="VT002">Motorcycle</option>
-                </Select><br>
-                <br>
-                <label>Vehicle Note</label><br>
-                <textarea name="note" placeholder="Vehicle Notes"></textarea><br>
-                <br>
-                <label>Order Desc</label><br>
-                <textarea name="desc" placeholder="Desc Of Order"></textarea><br>
-                <input type="hidden" name="date" value="<?= $datenow ?>">
-                <input type="submit" name="btn" value="Submit">
-            </form> 
-    </div>
+                While($row= mysqli_fetch_assoc($res)){
+                        $no++
+                ?>
+                <tbody>
+                    <tr>
+                        <td><?= $no?></td>
+                        <td><?= $row['WOID'];?></td>
+                        <td><?= $row['VehicleID'];?></td>
+                        <td><?= $row['WODateTime'];?></td>
+                        <td><?= $row['OrderDescription'];?></td>
+                        <td>
+                        <button><a href="../Function/Edit_wo.php?lel=<?=$row['WOID']; ?>">Edit</a></button>
+                        <button><a href="../Function/Del_wo.php?lel=<?=$row['WOID']; ?>">Delete</a></button>
+                        <button><a href="../Function/Cekout_wo.php?lel=<?=$row['WOID']; ?>">CheckOut</a></button>
+                        </td>
+
+                    </tr>
+
+                <?php
+                }
+                ?>
+                </tbody>
+            </table> 
+        </>
+
     </section>
 
-        <?php
-        if(isset($_POST['btn'])){
+    <script>
+            $(document).ready(function() {
+            $(".search").keyup(function () {
+                var searchTerm = $(".search").val();
+                var listItem = $('.results tbody').children('tr');
+                var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+                
+            $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                    return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                }
+            });
+                
+            $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','false');
+            });
 
-        include "../function/condb.php";
-        $woid = $_POST['idwo'];
-        $vecid = $_POST['id'];
-        $cusid = $_POST['cusid'];
-        $vectype = $_POST['type'];
-        $vecnote = $_POST['note'];
-        $descorder = $_POST['desc'];
-        $datenow = $_POST['date'];
+            $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','true');
+            });
 
-        $sqlvehicle = "INSERT INTO vehicle(VehicleID,CustomerID,VTypeID,Notes) VALUES('$vecid','$cusid','$vectype','$vecnote')";
-        $sqldetail = "INSERT INTO wo_detail(StaffID,WOID) VALUES ('$idstaff','$woid')";
-        $sqlwo = "INSERT INTO work_order(WOID,VehicleID,WODateTime,OrderDescription) VALUES('$woid','$vecid','$datenow','$descorder')";
-        $res1 = mysqli_query($con,$sqlvehicle);
-        $res1  = mysqli_query($con,$sqldetail);
-        $res1= mysqli_query($con,$sqlwo);
-        
-            if($res1){               
-                echo "
-                <script>
-                    alert('Wo dan Vehicle Data Berhasil di Simpan');
-                </script>
-            ";
-            }
-            else{
-                echo "
-                <script>
-                    alert('Wo dan Vehicle Data gaggal di Simpan');
-                </script>
-                ";
-            }
-        
-    }
-        ?>
+            var jobCount = $('.results tbody tr[visible="true"]').length;
+                $('.counter').text(jobCount + ' item');
+
+            if(jobCount == '0') {$('.no-result').show();}
+                else {$('.no-result').hide();}
+                    });
+            });
+            </script>
         
     </body>
 
     <?php
-        error_reporting(E_ALL ^ E_NOTICE);  
-        error_reporting(E_ERROR | E_PARSE);
-        session_start();
-        
-        if($user = $_SESSION['name']){
-            if(!$type = $_SESSION['type'] == "TP001" ){
-                header('location:../Admin/Home_M.php');
-            }
-        }
-        else  
-            header('location:../index.php');
-
-
+    error_reporting(E_ALL ^ E_NOTICE);  
+    error_reporting(E_ERROR | E_PARSE);
+    if($user = $_SESSION['name']){
+       
+    }
+    else  
+        header('location:../index.php');
     ?>
 </html>

@@ -83,7 +83,6 @@
                         <td><?= $row['CustomerPNumber'];?></td>
                         <td><?= $row['CustomerEmail'];?></td>
                         <td>  
-                        <button><a href="../function/Edit_cus.php?lel=<?=$row['CustomerID'];?>">Detail</a></button>
                         <button><a href="../function/Edit_cus.php?lel=<?=$row['CustomerID'];?>">Edit</a></button>
                         <button><a href="../function/Del_cus.php?lel=<?=$row['CustomerID'];?>">Delete</a></button>
                         </td>
