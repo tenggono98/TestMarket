@@ -48,13 +48,11 @@
             include "../function/condb.php";
             $sql = "SELECT CustomerID FROM customer  ";
             $res = mysqli_query($con,$sql);
-            
-           
            ?>
 
             
             
-            <!-- <label >ID Customer </label><br> -->
+            <label >ID Customer </label><br>
      
 
             <form action="" method="POST">
@@ -65,21 +63,50 @@
             $datenow =  date("Y/m/d");
             $idstaff= $_SESSION['id'];
             
-            // echo "<select name='cusid'>";
-            // while($row = mysqli_fetch_array($res)){
-            //     echo '<option value="'.$row['CustomerID'].'">'.$row['CustomerID'].'</option>';
+            echo "<select name='cusid'>";
+            while($row = mysqli_fetch_array($res)){
+                echo '<option value="'.$row['CustomerID'].'">'.$row['CustomerID'].'</option>';
                 
-            // }
-            // echo "</select>";
-    
+            }
+            echo "</select>";
+            
+           
             
             ?>
+            <input type='submit' name='btn1' id='btn1' value='Select ID'>
+            </form>
+            <?php
+            if(isset($_POST['btn1'])){
+                $cusid = $_POST['cusid'];
+                echo'<meta http-equiv="refresh" content="0; url=../function/tambah_wo.php?lel='.$cusid.'"/>';
+                exit();
             
+        }
+            
+            ?>
+
+            <form action="" method="POST">
+            
+             <br>
                 <label>Work Order ID</label><br>
                 <input type="text" name="idwo" value="<?=$autogenidwo?>"  readonly><br>
                 <br>
                 <label>Vehicle ID</label><br>
-                <input type="text" name="id" value="<?=$autogenidvec?>"  readonly><br>
+                <?php
+                error_reporting(E_ALL ^ E_NOTICE);  
+                error_reporting(E_ERROR | E_PARSE);
+                include "../function/condb.php";
+                $getidcus = $_GET[lel];
+                $sql1 = "SELECT VehicleID FROM Vehicle Where CustomerID ='$getidcus' ";
+                $res1 = mysqli_query($con,$sql1);
+                echo "<select name='vecid'>";
+                 while($row1 = mysqli_fetch_array($res1)){
+                echo '<option value="'.$row1['VehicleID'].'">'.$row1['VehicleID'].'</option>';
+                
+            }
+            echo "</select>";
+            ?>
+                
                 <br>
                 <label>Type Vehicle</label><br>
                 <Select name="type">
@@ -93,27 +120,26 @@
                 <label>Order Desc</label><br>
                 <textarea name="desc" cols="30" rows="4" placeholder="Desc Of Order"></textarea><br>
                 <input type="hidden" name="date" value="<?= $datenow ?>">
-                <input type="submit" name="btn" value="Submit">
+                <input type="submit" name="btn2" value="Submit">
             </form> 
     </div>
     </section>
-
         <?php
-        if(isset($_POST['btn'])){
-
+        if(isset($_POST['btn2'])){
         include "../function/condb.php";
         $woid = $_POST['idwo'];
-        $vecid = $_POST['id'];
+        $vecid = $_POST['vecid'];
         $cusid = $_POST['cusid'];
         $vectype = $_POST['type'];
         $vecnote = $_POST['note'];
         $descorder = $_POST['desc'];
         $datenow = $_POST['date'];
+        $stat = "OnProgress";
 
-       // $sqlvehicle = "INSERT INTO vehicle(VehicleID,CustomerID,VTypeID,Notes) VALUES('$vecid','$cusid','$vectype','$vecnote')";
+        $sqlvehicle = "INSERT INTO vehicle(VehicleID,CustomerID,VTypeID,Notes) VALUES('$vecid','$cusid','$vectype','$vecnote')";
         $sqldetail = "INSERT INTO wo_detail(StaffID,WOID) VALUES ('$idstaff','$woid')";
-        $sqlwo = "INSERT INTO work_order(WOID,VehicleID,WODateTime,OrderDescription) VALUES('$woid','$vecid','$datenow','$descorder')";
-      //  $res1 = mysqli_query($con,$sqlvehicle);
+        $sqlwo = "INSERT INTO work_order(WOID,VehicleID,WODateTime,OrderDescription,stat) VALUES('$woid','$vecid','$datenow','$descorder','$stat')";
+        $res1 = mysqli_query($con,$sqlvehicle);
         $res1  = mysqli_query($con,$sqldetail);
         $res1= mysqli_query($con,$sqlwo);
         
@@ -122,7 +148,7 @@
                 <script>
                     alert('Wo dan Vehicle Data Berhasil di Simpan');
                 </script>
-            ";
+            "; 
             }
             else{
                 echo "

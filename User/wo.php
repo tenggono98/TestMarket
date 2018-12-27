@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Inventory</title>
+    <title>Work Order</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +44,7 @@
                 <button ><a href="../Function/Tambah_wo.php">Tambah Work Order</a></button><br>
             </div>
             
-            <table class="table table-hover table-bordered results" >
+            <table class="table table-hover table-bordered results text-center" >
                 <div class="form-group pull-right">
                     <input type="text" class="search form-control" placeholder="What you looking for?">
                 </div>
@@ -54,6 +54,7 @@
                     <th>VehicleID</th>
                     <th>Word Order Date</th>
                     <th>Order Desc</th>
+                    <th>Status</th>
                     <th>Control</th>
                 </thead>
                 <?php
@@ -74,9 +75,23 @@
                         <td><?= $row['VehicleID'];?></td>
                         <td><?= $row['WODateTime'];?></td>
                         <td><?= $row['OrderDescription'];?></td>
+                        <?php
+                        
+                        if($row['stat'] == "OnProgress"){
+                            echo "<style> 
+                            p { color:red;}
+                            </style>";
+                        }if($row['stat'] == "Done"){
+                            echo "<style> 
+                            p { color:green;}
+                            </style>";
+                        }
+                        ?>
+                        <td><p><?=$row['stat'];?></p></td>
                         <td>
                         <button><a href="../Function/Edit_wo.php?lel=<?=$row['WOID']; ?>">Edit</a></button>
                         <button><a href="../Function/Del_wo.php?lel=<?=$row['WOID']; ?>">Delete</a></button>
+                        <button><a href="../Function/additem_wo.php?lel=<?=$row['WOID']; ?>">Add Item</a></button>
                         <button><a href="../Function/Cekout_wo.php?lel=<?=$row['WOID']; ?>">CheckOut</a></button>
                         </td>
 
@@ -87,7 +102,7 @@
                 ?>
                 </tbody>
             </table> 
-        </>
+        </p>
 
     </section>
 
