@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Edit Item</title>
+    <title>Tambah Vendor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link rel="stylesheet" href="../bootstrap-4.1.3-dist/css/bootstrap.min.css">
@@ -42,9 +42,7 @@
         include "../Function/condb.php";
         include "../Function/autogen_allid.php";
 
-        $sql = " ";
-        $res = mysqli_query($con,$sql);
-        $row = mysqli_fetch_assoc($res);
+       
         $autoidvendor = autogen_vendorid();
 
         ?>
@@ -117,7 +115,7 @@
                     <br>
                     
                     <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >
-                    <input type="submit" value="Back" name="back" >
+        
                 </form>
         </div>
     </Section>
@@ -151,10 +149,7 @@
                 echo '</script>';
         }
 
-        if(isset($_POST['back'])){
-            Header("location:../Function/Tambah_Item.php");
-        }
-
+      
     ?>
 
 <script>
@@ -188,12 +183,12 @@
 
     </body>
         <?php
-        // error_reporting(E_ALL ^ E_NOTICE);
-        // error_reporting(E_ERROR | E_PARSE);
-        // session_start();
-        // if ($username = $_SESSION['name']) {
+        error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(E_ERROR | E_PARSE);
+        session_start();
+        if ($username = $_SESSION['name']) {
             
-        // } else
-        //     header("location:../index.php");
+        } else
+            header("location:../index.php");
         ?>
 </html>
