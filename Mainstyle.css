@@ -102,3 +102,12 @@
      padding-bottom: 2%;
      background-color: white;
  }
+
+ p[done] {
+     color: green;
+ }
+
+ p[OnProgress] {
+     color: red;
+
+ }

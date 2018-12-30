@@ -65,8 +65,10 @@
                 $res = mysqli_query($con,$sql);
                 $no=0;
 
+                
+
                 While($row= mysqli_fetch_assoc($res)){
-                        $no++
+                        $no++;
                 ?>
                 <tbody>
                     <tr>
@@ -75,18 +77,7 @@
                         <td><?= $row['VehicleID'];?></td>
                         <td><?= $row['WODateTime'];?></td>
                         <td><?= $row['OrderDescription'];?></td>
-                        <?php
                         
-                        if($row['stat'] == "OnProgress"){
-                            echo "<style> 
-                            p { color:red;}
-                            </style>";
-                        }if($row['stat'] == "Done"){
-                            echo "<style> 
-                            p { color:green;}
-                            </style>";
-                        }
-                        ?>
                         <td><p><?=$row['stat'];?></p></td>
                         <td>
                         <button><a href="../Function/Edit_wo.php?lel=<?=$row['WOID']; ?>">Edit</a></button>
@@ -96,9 +87,13 @@
                         </td>
 
                     </tr>
-
+                    <?php
+                       
+                        
+                        ?>
                 <?php
                 }
+               
                 ?>
                 </tbody>
             </table> 

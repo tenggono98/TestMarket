@@ -126,7 +126,7 @@
                         <td>Rp.<?= number_format($totalprice, 2);?></td>
                         <td>
                         <button><a href="../Function/Edititem_wo.php?lel=<?=$rowtable1['ItemID'];?>&lel2=<?=$WOIDIN?>">Edit</a></button>
-                        <button><a href="../Function/Del_item.php?lel=<?=$row['ItemID']; ?>">Delete</a></button>
+                        <button><a href="../Function/delitem_wo.php?lel=<?=$rowtable1['ItemID'];?>&lel2=<?=$WOIDIN?>">Delete</a></button>
                         </td>
                     </tr>
                    

@@ -40,7 +40,7 @@
         error_reporting(E_ERROR | E_PARSE);
         session_start();
         $INitem = $_GET['lel'];
-         $INwoid = $_GET['lel2'];
+        $INwoid = $_GET['lel2'];
         
         include "../Function/condb.php";
 
