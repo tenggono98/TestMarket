@@ -34,6 +34,7 @@
     </Section>
 
     <Section Class="Contentitem_M">
+        <div class="container px-5 py-5">
         <?php
         error_reporting(E_ALL ^ E_NOTICE);
         error_reporting(E_ERROR | E_PARSE);
@@ -179,6 +180,7 @@
         
                 </form>
         </div>
+    </div>
     </Section>
 
     <?php

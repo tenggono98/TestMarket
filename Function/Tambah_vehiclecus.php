@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tambah Customer</title>
+    <title>Vehicle Customer</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,6 @@
         <Section class="Header">
 
         <?php
-
 
         session_start();
         define("HEADER_admin","../content/header_admin.php",false);
@@ -32,38 +31,46 @@
             require_once(HEADER_user);
             
         }
+
         ?>
-        
         </Section>
 
         <section Class="Contentitem_M">
 
 
                 <div  Class="container"  >
-
-                <h1>Register Customer</h1>
-
-                <hr>
-
-                <h5>Data Customer</h5>
-
-                <?php
+                <h1>Register Vehicle Customer</h1>
                 
+                <hr>
+                <?php
+                include "../function/condb.php";
                 include "../function/autogen_allid.php";
-                $autocusid = autogen_cusid();      
+                $selectedin = $_GET['lel'];
+                $autovecid = autogen_vehicleid();   
+                
+
+                $sql1 = "SELECT * FROM customer WHERE CustomerID = '$selectedin' ";
+                $res = mysqli_query($con,$sql1);
+                $row = mysqli_fetch_assoc($res);
+
                 ?>
+
+                <br><h2>Selected Customer : <?= $selectedin ?></h2>
             <form action="" method="POST">
-                <label >ID Customer </label><br>
-                <input type="text" name="id" value="<?= $autocusid ?>" readonly><br>
                 <br>
-                <label >Customer Name </label><br>
-                <input type="text" name="name" ><br>
+                <label >Customer ID </label><br>
+                <input type="text" name="cusid" value="<?= $row['CustomerID'];?>" readonly ><br>
                 <br>
-                <label >Customer Phone Number</label><br>
-                <input type="number" name="pnum" ><br>
+                <label >Customer Name</label><br>
+                <input type="text" name="cusname" value="<?= $row['CustomerName'];?>" readonly ><br>
                 <br>
-                <label >Customer Email </label><br>
-                <input type="email" name="email" ><br>
+                <label >Vehicle ID </label><br>
+                <input type="text" name="vecid" value="<?= $autovecid?>" readonly ><br>
+                <label>Type Vehicle</label><br>
+                <Select name="type">
+                    <option value="VT001">Car</option>
+                    <option value="VT002">Motorcycle</option>
+                </Select><br>
                 <br>
                 <input type="submit" name="btn" value="Submit">
             </form>
@@ -75,28 +82,31 @@
         <?php
         
         if(isset($_POST['btn'])){
+            
 
             include "../function/condb.php";
-            $cusid = $_POST['id'];
-            $cusname = $_POST['name'];
-            $cuspnum = $_POST['pnum'];
-            $cusemail = $_POST['email'];
-            $createdate = date("Y/m/d");
-            $sql = "INSERT INTO customer(CustomerID,CustomerName,CustomerPNumber,CustomerEmail,DateCreate) VALUES ('$cusid','$cusname','$cuspnum','$cusemail','$createdate') ";
+
+            $cusid = $_POST['cusid'];
+            $cusname = $_POST['cusname'];
+            $vecid = $_POST['vecid'];
+            $vectype = $_POST['type'];
+
+            $sql = "INSERT INTO vehicle(VehicleID,CustomerID,VtypeID) VALUES ('$vecid','$cusid','$vectype') ";
             $res = mysqli_query($con,$sql);
 
             if($res){
                 echo "<script>
-                alert('Data Customer Sudah di simpan');
+                alert('Data Vehicle Sudah di simpan');
                 </script>";
                 echo "<meta http-equiv = 'refresh' content='0 url=../user/Customer.php' >";
             }
             else{
                 echo "<script>
-                alert('Data Customer Tidak bisa di simpan');
+                alert('Data Vehicle Tidak bisa di simpan');
                 </script>";
-            
+               echo mysqli_error($con);
             }
+            
         
         }
         

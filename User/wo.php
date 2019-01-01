@@ -77,7 +77,6 @@
                         <td><?= $row['VehicleID'];?></td>
                         <td><?= $row['WODateTime'];?></td>
                         <td><?= $row['OrderDescription'];?></td>
-                        
                         <td><p><?=$row['stat'];?></p></td>
                         <td>
                         <button><a href="../Function/Edit_wo.php?lel=<?=$row['WOID']; ?>">Edit</a></button>

@@ -34,6 +34,7 @@
     </Section>
 
     <Section Class="ContentEdit">
+    <div class="container px-5 py-2">
         <?php
         error_reporting(E_ALL ^ E_NOTICE);
         error_reporting(E_ERROR | E_PARSE);
@@ -83,8 +84,8 @@
                         <td><?= $row['VendorPICPNumber'];?></td>
                         <td><?= $row['VendorPICEmail'];?></td>
                         <td>
-                        <button><a href="../Function/Edit_item.php?lel=<?=$row['VendorID']; ?>">Edit</a></button>
-                        <button><a href="../Function/Del_item.php?lel=<?=$row['VendorID']; ?>">Delete</a></button>
+                        <button><a href="../Function/Edit_vendor.php?lel=<?=$row['VendorID']; ?>">Edit</a></button>
+                        <button><a href="../Function/Del_vendor.php?lel=<?=$row['VendorID']; ?>">Delete</a></button>
                         </td>
                     </tr>
             <?php
@@ -132,7 +133,7 @@
             $email = $_POST['email'];
 
 
-            $sql = "INSERT INTO Vendor(VendorID,VebdorName,VendorPICName,VendorPICPNumber,VendorPICEmail) VALUES ('$id','$name','$namePIC','$number','$email')  ";
+            $sql = "INSERT INTO Vendor(VendorID,VendorName,VendorPICName,VendorPICPNumber,VendorPICEmail) VALUES ('$id','$name','$namePIC','$number','$email')  ";
             $res = mysqli_query($con, $sql);
 
             if ($res) {
@@ -151,6 +152,7 @@
 
       
     ?>
+    </div>
 
 <script>
             $(document).ready(function() {

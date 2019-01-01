@@ -38,7 +38,7 @@
     <section Class="Contentitem_M">
 
 
-            <div  Class="container"  >
+            <div Class="container" >
 
             <h1>Work Order</h1>
 
@@ -57,6 +57,8 @@
 
             <form action="" method="POST">
             <?php 
+            error_reporting(E_ALL ^ E_NOTICE);  
+            error_reporting(E_ERROR | E_PARSE);
             include "../function/autogen_allid.php"; 
             $autogenidvec = autogen_vehicleid();
             $autogenidwo = autogen_woid();
@@ -79,12 +81,15 @@
             if(isset($_POST['btn1'])){
                 $cusid = $_POST['cusid'];
                 echo'<meta http-equiv="refresh" content="0; url=../function/tambah_wo.php?lel='.$cusid.'"/>';
+                
                 exit();
             
-        }
-            
-            ?>
+            }
 
+            $selectcus = $_GET[lel];
+            ?>
+            
+            <br><h2>Selected Customer : <?= $selectcus ?></h2>
             <form action="" method="POST">
             
              <br>
@@ -122,7 +127,7 @@
                 <input type="hidden" name="date" value="<?= $datenow ?>">
                 <input type="submit" name="btn2" value="Submit">
             </form> 
-    </div>
+        </div>
     </section>
         <?php
         if(isset($_POST['btn2'])){
@@ -166,7 +171,7 @@
     <?php
         error_reporting(E_ALL ^ E_NOTICE);  
         error_reporting(E_ERROR | E_PARSE);
-        session_start();
+        
         
         if($user = $_SESSION['name']){
             if(!$type = $_SESSION['type'] == "TP001" ){

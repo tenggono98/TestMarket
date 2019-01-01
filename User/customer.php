@@ -45,8 +45,8 @@
             <hr>
 
             <div Class="btn_top" style=" padding-bottom:1%;">
-                <button ><a href="../Function/Tambah_cus.php">Tambah Customer</a></button><br>
-            </div> 
+                <button ><a href="../Function/Tambah_cus.php">Tambah Customer</a></button>
+            </div>
 
           
             <table class="table table-hover table-bordered results" >
@@ -60,6 +60,7 @@
                     <th>Name</th>
                     <th>Phone Number</th>
                     <th>Email</th>
+                    <th>Member Since</th>
                     <th>Control</th>
 
                 </thead>
@@ -82,9 +83,11 @@
                         <td><?= $row['CustomerName'];?></td>
                         <td><?= $row['CustomerPNumber'];?></td>
                         <td><?= $row['CustomerEmail'];?></td>
+                        <td><?= $row['DateCreate'];?></td>
                         <td>  
                         <button><a href="../function/Edit_cus.php?lel=<?=$row['CustomerID'];?>">Edit</a></button>
                         <button><a href="../function/Del_cus.php?lel=<?=$row['CustomerID'];?>">Delete</a></button>
+                        <button><a href="../Function/Tambah_vehiclecus.php?lel=<?=$row['CustomerID'];?>">Add Vehicle </a></button>
                         </td>
                     </tr>
             <?php

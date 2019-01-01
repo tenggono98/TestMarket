@@ -115,7 +115,7 @@
             $res = mysqli_query($con, $sql);
 
 
-            //staff(StaffId,STypeID,StaffName,StaffPNumber,StaffEmail,StaffPassword,StaffDOB,StaffSalary
+            
             if ($res) {
                 
                 echo '<script language="javascript">';
@@ -130,7 +130,7 @@
         }
 
         if(isset($_POST['back'])){
-            Header("location:../Admin/staff_M.php");
+           echo "<meta http-equiv= 'refresh' content='0 url=../admin/staff_m.php'>";
         }
 
     ?>
