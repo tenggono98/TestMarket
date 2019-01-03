@@ -59,7 +59,7 @@
         <div Class="text-left border-3">
           <?php
               $rankin =  $row['STypeID'];
-              $rank_r = str_replace("TP001",Manager,$rankin);
+              $rank_r = str_replace("TP002",Staff,$rankin);
           ?>
           <h3 Class="pl-3 pt-2">Detail Profile</h3>
           
