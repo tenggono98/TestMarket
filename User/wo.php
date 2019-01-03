@@ -82,7 +82,7 @@
                         <button><a href="../Function/Edit_wo.php?lel=<?=$row['WOID']; ?>">Edit</a></button>
                         <button><a href="../Function/Del_wo.php?lel=<?=$row['WOID']; ?>">Delete</a></button>
                         <button><a href="../Function/additem_wo.php?lel=<?=$row['WOID']; ?>">Add Item</a></button>
-                        <button><a href="../Function/Cekout_wo.php?lel=<?=$row['WOID']; ?>">CheckOut</a></button>
+                        <button><a href="../Function/Cekout_wo.php?lel=<?=$row['WOID'];?>&lel2=<?=$row['VehicleID'];?>">CheckOut</a></button>
                         </td>
 
                     </tr>

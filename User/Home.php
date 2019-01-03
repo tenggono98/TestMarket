@@ -16,9 +16,6 @@
 
     <section Class="Header">
     
-
-    
-
       <?php
 
       define("HEADER", "../content/header_user.php", false);
@@ -40,55 +37,49 @@
       <div  Class="container" >
 
 
+      <div  Class="container bg-light text-center pb-5   "  >
         <center><h1>Profile</h1></center>
 
         <?php
-          error_reporting(E_ALL ^ E_NOTICE);
-          error_reporting(E_ERROR | E_PARSE);
-          include "../Function/condb.php";
-          session_start();
-          $id = $_SESSION['id'];
+        error_reporting(E_ALL ^ E_NOTICE);
+        error_reporting(E_ERROR | E_PARSE);
+        session_start();
+        
+        include "../Function/condb.php";
+        $id = $_SESSION['id'];
 
-          $sql = "SELECT * FROM STAFF where StaffID = '$id' ";
-          $res= mysqli_query($con,$sql);
-          $row = mysqli_fetch_assoc($res);
+        $sql = "SELECT * FROM STAFF where StaffID = '$id'";
+        $res= mysqli_query($con,$sql);
+        $row = mysqli_fetch_assoc($res);
         ?>
-
-        <div class="text-center">
-            <img src="../img/staff_pic/<?= $row['img'];?>" class="rounded-circle" width="220" height="200">
+            <img src="../img/staff_pic/<?= $row['img'];?>" class=" rounded-circle shadow p-3 mb-5 bg-white rounded " width="360" height="360">
             <h1><?= $row['StaffName']; ?></h1>
-        </div>
-        <hr>
-        <div Class="text-left">
+      </div>
+                
+        <div Class="text-left border-3">
           <?php
-            $rankin =  $row['STypeID'];
-            $rank_r = str_replace("TP002",Staff,$rankin);
+              $rankin =  $row['STypeID'];
+              $rank_r = str_replace("TP001",Manager,$rankin);
           ?>
-
-          <h3>Detail Profile</h3>
-          <h5>Rank     : <?= $rank_r ?></h5>
+          <h3 Class="pl-3 pt-2">Detail Profile</h3>
+          
+          
+          <div class="container ml-3">
+          <hr width="70%" align="left" >
+          <h5>Rank     : <?= $rank_r?> </h5>
           <h5>ID      : <?= $row['StaffID']; ?></h5>
           <h5>Number  : <?= $row['StaffPNumber']; ?></h5>
           <h5>Email   : <?= $row['StaffEmail']; ?></h5>
           <h5>DOB     : <?= $row['StaffDOB']; ?></h5>
-        </div>
-
-      </div>
-
-
-    </section>
-
-    <section class="footer">
-      <div class="container pt-3">
-        <div Class="footer">
-          <div class="jumbotron jumbotron-fluid">
-            <div class="container text-left">
-              <p>Create By .Alfonso Tenggono</p>
-            </div>
           </div>
-        </div>
+
+      </div>     
+      
+      
       </div>
     </section>
+
+   
 
   </body>
 

@@ -87,7 +87,7 @@
 
            
 
-            $pic = upload();
+            upload();
 
             // if(!$pic){
             //     return false;
@@ -101,16 +101,16 @@
             if ($res) {
                 if(isset($_POST['sub'])){
                 echo '  <script language="javascript">;
-                            alert("Data sudah di simpan");
+                            alert("Staff Data sudah di simpan");
                         </script>';
                 echo "<meta http-equiv = 'refresh' content='0 url=../Admin/staff_M.php' >";
                 }
             } else
                 echo '<script language="javascript">';
-                echo 'alert("Data Tidak bisa di simpan Mohon untuk Cek lagi datanya !")';
+                echo 'alert("Staff Data Tidak bisa di simpan Mohon untuk Cek lagi datanya !")';
                 echo '</script>';
+        
         }
-
        
 
         function upload(){
@@ -124,31 +124,35 @@
                 echo "<script>
                         alert('Select Picture !');
                     </script>";
-                return false;
+                exit();
             }
             //Masih Belum bisa (Validasi tipefile)
-            // $validformatpic = ['jpg','png','jpeg'];
-            // $formatpic = explode('.','$namefile');
-            // $formatpic = strtolower(end($formatpic));
+            $validformatpic = ['jpg','png','jpeg'];
+            $formatpic = explode('.','$namefile');
+            $formatpic = strtolower(end($formatpic));
             
-            // if(!in_array($formatpic,$validformatpic)){
-            //     echo "  <script>
-            //              alert('Not a Picture');
-            //             </script>";
+            if(!in_array($formatpic,$validformatpic)){
+                echo "  <script>
+                         alert('File is Not a Picture');
+                        </script>";
+                        exit();
                         
 
-            // }
+            }
 
-            if($sizefile > 2000000){
+            if($sizefile > 20000){
                 echo "  <script>
                 alert(' Picture Size to Big max:20MB');
                </script>";
+               exit();
             }
 
             move_uploaded_file($tempName,'../img/staff_pic/'.$namefile);
 
             return $namefile;
         }
+
+    
 
     ?>
 
