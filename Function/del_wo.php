@@ -21,7 +21,7 @@ if ($res) {
 	echo 'alert("WO Tidak Bisa di hapus !")';
   echo '</script>';
   echo "<meta http-equiv='refresh' content= '0 url=../user/wo.php' >";
-	echo mysqli_error();
+	echo mysqli_error($con);
 }
 
 ?>

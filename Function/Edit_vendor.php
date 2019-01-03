@@ -52,21 +52,21 @@
         <div class="container">
 
             <h1>Edit Vendor</h1>
-            <form  method="POST" >
+            <form  method="POST" data-toggle="validator" role="form">
                     <Label >Vendor ID</Label><br>
                     <input type="text" name="id" value="<?= $row['VendorID'];?>" readonly><br>
     
                     <Label>Vendor Name</Label><br>
-                    <input type="text" name="venname" value="<?= $row['VendorName'];?>"><br>
+                    <input type="text" name="venname" value="<?= $row['VendorName'];?>" required><br>
                     
                     <Label>Vendor PIC Name</Label><br>
-                    <input type="text" name="picname" value="<?= $row['VendorPICName'];?>" ><br>
+                    <input type="text" name="picname" value="<?= $row['VendorPICName'];?>" required><br>
 
                     <Label>Vendor PIC Number</Label><br>
-                    <input name="number" id="picnum" value="<?= $row['VendorPICPNumber'];?>"><br>
+                    <input name="number" id="picnum" value="<?= $row['VendorPICPNumber'];?>" required><br>
 
                     <Label>Vendor PIC Email</Label><br>
-                    <input type="email" name="picemail" value="<?= $row['VendorPICEmail'];?>" ><br>
+                    <input type="email" name="picemail" value="<?= $row['VendorPICEmail'];?>" required><br>
 
                     <br>
                     <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >

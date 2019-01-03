@@ -149,7 +149,7 @@
         
         <div class="container">
             <h1>Add Item to Work Order</h1>
-                <form action="" method="POST">
+                <form action="" method="POST" data-toggle="validator" role="form">
 
                     <?php
                     $inWO = $_GET[lel];
@@ -171,7 +171,7 @@
                     ?>
 
                     <Label>Qty</Label><br>
-                    <input type="number" name="qty" ><br>
+                    <input type="number" name="qty" required><br>
                     
                    
                     <br>

@@ -97,21 +97,21 @@
         
         <div class="container">
             <h1>Tambah Vendor</h1>
-                <form action="" method="POST">
+                <form action="" method="POST" data-toggle="validator" role="form">
                     <Label>Vendor ID</Label><br>
                     <input type="text" name="id" value="<?= $autoidvendor ?>" readonly><br>
                     
                     <Label>Vendor Name</Label><br>
-                    <input type="text" name="name" ><br>
+                    <input type="text" name="name" required><br>
 
                     <Label>Vendor PIC Name</Label><br>
-                    <input type="text" name="namePIC" ><br>
+                    <input type="text" name="namePIC" required><br>
                     
                     <Label>Vendor Phone Number</Label><br>
-                    <input type="number" name="num" ><br>
+                    <input type="number" name="num" required><br>
                     
                     <Label>Vendor Email</Label><br>
-                    <input type="email" name="email" ><br>
+                    <input type="email" name="email" required><br>
                     
                     <br>
                     
@@ -142,7 +142,7 @@
                 echo '<script language="javascript">';
                 echo 'alert("Data Vendor sudah di simpan")';
                 echo '</script>';
-                echo "<meta http-equiv = 'refresh' content='0 url=../Function/Tambah_Item.php' >";
+                echo "<meta http-equiv = 'refresh' content='0 url=../Function/Tambah_vendor.php' >";
                 }
             } else
                 echo '<script language="javascript">';

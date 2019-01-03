@@ -30,7 +30,7 @@
        
         <div class="container">
             <h1>Tambah Staff</h1>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data" data-toggle="validator" role="form">
                     <Label >Staff ID</Label><br>
                     <input type="text" name="id" value="<?=$autoidstaff?>" readonly><br>
                     
@@ -41,26 +41,26 @@
                     </Select><br>
                     
                     <Label>Staff Name</Label><br>
-                    <input type="text" name="name" ><br>
+                    <input type="text" name="name" required><br>
                     
                     <Label>Staff Phone Number</Label><br>
-                    <input type="text" name="num" ><br>
+                    <input type="text" name="num" required><br>
 
                     <Label>Staff Email</Label><br>
-                    <input type="email" name="email" ><br>
+                    <input type="email" name="email" required><br>
 
                     <Label>Staff Password</Label><br>
-                    <input type="password" name="pass" ><br>
+                    <input type="password" name="pass" required><br>
 
                     
                     <Label>DOB</Label><br>
-                    <input type="date" name="date" ><br>
+                    <input type="date" name="date" required><br>
 
                     <Label>Salary</Label><br>
-                    Rp. <input type="number" name="gaji" ><br>
+                    Rp. <input type="number" name="gaji" required><br>
 
                     <Label>Picture</Label><br>
-                    <input type="file" name="pic" ><br>
+                    <input type="file" name="pic" required><br>
     
                     <br>
                     <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >

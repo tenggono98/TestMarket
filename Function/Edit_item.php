@@ -46,21 +46,21 @@
         <div class="container">
 
             <h1>Edit Item</h1>
-                <form action="" method="POST">
+                <form action="" method="POST" data-toggle="validator" role="form">
                     <Label>Item ID</Label><br>
                     <input type="text" name="id" value="<?=$row['ItemID'];?>" readonly><br>
                     
                     <Label>Name</Label><br>
-                    <input type="text" name="name" value="<?=$row['ItemName'];?>"><br>
+                    <input type="text" name="name" value="<?=$row['ItemName'];?>" required><br>
                     
                     <Label>Stock</Label><br>
-                    <input type="text" name="stock" value="<?=$row['ItemStock'];?>"><br>
+                    <input type="text" name="stock" value="<?=$row['ItemStock'];?>" required><br>
                     
                     <Label>Price</Label><br>
-                    <input type="text" name="price" value="<?=$row['ItemPrice'];?>"><br>
+                    <input type="text" name="price" value="<?=$row['ItemPrice'];?>" required><br>
                     
                     <Label>Desc</Label><br>
-                    <textarea name ="desc"cols=50 rows=5> <?=$row['ItemDescription'];?></textarea><br> 
+                    <textarea name ="desc"cols=50 rows=5 required><?=$row['ItemDescription'];?></textarea><br> 
                     <br>
                     <input type="submit" value="Submit" name="sub" >
                     <input type="submit" value="Back" name="back" >

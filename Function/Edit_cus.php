@@ -56,18 +56,18 @@
         <div class="container">
 
             <h1>Edit Customer Data</h1>
-                <form action="" method="POST">
+                <form action="" method="POST" data-toggle="validator" role="form">
                     <Label>Customer ID</Label><br>
                     <input type="text" name="id" value="<?=$row['CustomerID'];?>" readonly><br>
                     
                     <Label>Customer Name</Label><br>
-                    <input type="text" name="name" value="<?=$row['CustomerName'];?>"><br>
+                    <input type="text" name="name" value="<?=$row['CustomerName'];?>" required><br>
                     
                     <Label>Customer Phone Number </Label><br>
-                    <input type="number" name="num" value="<?=$row['CustomerPNumber'];?>"><br>
+                    <input type="number" name="num" value="<?=$row['CustomerPNumber'];?>" required><br>
                     
                     <Label>Email</Label><br>
-                    <input type="email" name="email" value="<?=$row['CustomerEmail'];?>"><br>
+                    <input type="email" name="email" value="<?=$row['CustomerEmail'];?>" required><br>
                     
 
                     <br>

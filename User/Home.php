@@ -52,7 +52,7 @@
         $res= mysqli_query($con,$sql);
         $row = mysqli_fetch_assoc($res);
         ?>
-            <img src="../img/staff_pic/<?= $row['img'];?>" class=" rounded-circle shadow p-3 mb-5 bg-white rounded " width="360" height="360">
+            <img src="../img/staff_pic/<?= $row['img'];?>" class=" rounded-circle shadow p-3 mb-5 bg-white rounded " height="150">
             <h1><?= $row['StaffName']; ?></h1>
       </div>
                 

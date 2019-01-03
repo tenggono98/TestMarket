@@ -20,6 +20,8 @@
      include "../Function/autogen_allid.php";
      unset($_SESSION['pids']);
      $autopid= autogen_pid();
+
+     echo var_dump($autopid);
     
 
     define("HEADER","../content/header_admin.php",false);

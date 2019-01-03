@@ -39,9 +39,9 @@
           <td>
             <div id="LoginContent">
               <H1 class="text-center" Style='color:#3385ff; text-shadow: 4px 3px 1px black;'>Bengkel Kita</H1>
-              <form method="POST" action="">
+              <form method="POST" action="" data-toggle="validator" role="form">
                 <div class="form-group">
-                  <h1 class="LabelLogin">Email address</h1>
+                  <h1 class="LabelLogin needs">Email address</h1>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
                 </div>
                 <div class="form-group">
