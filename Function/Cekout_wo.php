@@ -134,7 +134,7 @@
                     $totalprice = ($row4['ItemPrice'] * $row4['Quantity'] )  ;
                     $totaltagihan = ($totalprice + 100000);
 
-                    echo var_dump($totaltagihan);
+                    
                     
             ?>
                     <tr>
