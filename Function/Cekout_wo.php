@@ -61,6 +61,14 @@
 
         <h5>Vehicle ID : <b><?=$invec?></b></h5>
 
+        <table>
+        
+        
+        
+        
+        
+        </table>
+
 
 
         
