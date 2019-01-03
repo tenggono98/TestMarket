@@ -45,13 +45,45 @@
         $inwo = $_GET['lel'];
         $invec = $_GET['lel2'];
 
-        $sql1 = " SELECT * FROM  work_order WHERE WOID = '$inwo' ";
+        $sql1 = "SELECT * FROM  work_order WHERE WOID = '$inwo' ";
         $res1 = mysqli_query($con,$sql1);
         $row1 = mysqli_fetch_assoc($res1);
 
-        $sql2 = "SELECT * FROM Vehicle WHERE VihicleID = '$invec' "
+        $sql2 = "SELECT 
+        cus.CustomerName as cusname , 
+        wo.WODateTime as createdate , 
+        wo.OrderDescription as orderdesc ,
+         wo.stat  as statuswo
+         FROM work_order wo join vehicle vc on 
+         wo.VehicleID = vc.VehicleID JOIN  customer  cus on 
+         vc.CustomerID = cus.CustomerID   
+         WHERE wo.VehicleID = '$invec' ";
+
+        $res2 = mysqli_query($con,$sql2);
+        $row2 = mysqli_fetch_assoc($res2);
+
+        $sql3 = "Select SUM(item.ItemPrice*sales_detail.Quantity) as Total_pay from sales_detail JOIN item on sales_detail.ItemID = item.ItemID WHERE sales_detail.WOID = '$inwo' ";
+        $res3 = mysqli_query($con,$sql3);
+        $row3 = mysqli_fetch_assoc($res3);
+        
+        $sql4 = "Select item.ItemID , 
+        item.ItemName,sales_detail.Quantity ,
+        item.ItemPrice 
+
+        
+        from sales_detail 
+        JOIN item on sales_detail.ItemID = item.ItemID WHERE sales_detail.WOID = '$inwo'";
+        $res4 = mysqli_query($con,$sql4);
+        
+        
+        
         
         ?>
+
+
+
+
+        
 
         
 
@@ -61,17 +93,80 @@
 
         <h5>Vehicle ID : <b><?=$invec?></b></h5>
 
-        <table>
+        <table class ="table table-sm ">
         
-        
+            
+            <tbody>
+                <tr><th>Customer Name   : </th> <td><?=$row2['cusname'];?> </td></tr>
+                <tr><th>Order Date :  </th> <td><?=$row2['createdate'];?> </td></tr>
+                <tr><th>Order Desc :  </th> <td><?=$row2['orderdesc'];?> </td></tr>
+                <tr><th>Service Type :  </th> <td> </td></tr>
+                
+                <tbody>
+                <tr>
+                
+                <th>Item : </th>
+
+            <tbody>
+             
+             <tr><th>No</th>
+             <th>Item ID</th>
+             <th>Item Name</th>
+             <th>Item Price</th>
+             <th>Qty</th>
+             <th>Total Price</th>
+            <?php
+                $no=0;
+                While($row4= mysqli_fetch_assoc($res4)){
+                    
+                    $no++;
+                    $totalprice = ($row4['ItemPrice'] * $row4['Quantity'] );
+                    
+            ?>
+                    <tr>
+                        <td > <?= $no?></td>
+                        <td> <?= $row4['ItemID'];?></td> 
+                        <td> <?= $row4['ItemName'];?></td> 
+                        <td> <?= $row4['ItemPrice'];?></td>
+                        <td> <?= $row4['Quantity'];?></td>
+                        <td>Rp. <?= number_format($totalprice,2) ?></td>              
+                    </tr>    
+            <?php
+            }
+            ?>
+                
+                </tr>
+                </tbody>
+
+                
+
+                <?php 
+                $totalitempay = $row3['Total_pay'];
+                if($totalitempay == null){
+                    $totalitempay = 0;
+                }
+                ?>
+                <tr><th >Total Item Price :  </th > <td >Rp.<?= number_format($totalitempay,2) ?> </td></tr>
+
+
+                <tr><th >Status :  </th > <td ><?=$row2['statuswo'];?> </td></tr>
+                
+            
+            </tbody>
+
         
         
         
         </table>
 
 
+        <form action="" method = "POST">
 
-        
+        <input type="submit" Value="CheckOut" name="btn">
+
+
+
+        </form>
 
         
         
@@ -81,6 +176,60 @@
         </section>       
         
     </body>
+
+        <?php
+        
+        if(isset($_POST['btn'])){
+
+            
+
+            $statusend = "Done";
+            $datedone = date("Y/m/d");
+
+            $sql5="UPDATE work_order SET stat = '$statusend' , DoneDate='$datedone ' WHERE WOID ='$inwo' ";
+            $res5= mysqli_query($con,$sql5);
+
+            $sql6="SELECT stat FROM work_order WHERE WOID = '$inwo' ";
+            $res6 = mysqli_query($con,$sql6);
+            $row6 = mysqli_fetch_assoc($res6);
+            
+            if(!$row6['stat'] == "Done"){
+                if($res5){
+                
+                    echo "
+                    <script>
+                        alert('CekOut Berhasil');
+                    </script>
+                "; 
+                echo "<meta http-equiv='refresh' content= '0 url=../user/wo.php' >";
+                }
+                else{
+                    echo "
+                    <script>
+                        alert('CekOut Gaggal !');
+                    </script>
+                "; 
+                }
+            }else if($row6['stat'] == "Done"){
+                
+                echo    "<script>";
+                echo   "     alert(' CekOut Gaggal ! Karena Status Sudah Done ')";
+                echo    "</script>";
+                     
+                 echo   "<meta http-equiv='refresh' content= '0 url=../user/wo.php' >";
+            }
+
+
+        }
+        
+        
+        
+        
+        ?>
+
+
+
+
 
     <?php
         error_reporting(E_ALL ^ E_NOTICE);  
