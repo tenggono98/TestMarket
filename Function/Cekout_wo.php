@@ -53,7 +53,8 @@
         cus.CustomerName as cusname , 
         wo.WODateTime as createdate , 
         wo.OrderDescription as orderdesc ,
-         wo.stat  as statuswo
+         wo.stat  as statuswo ,
+         vc.VTypeID as vtype
          FROM work_order wo join vehicle vc on 
          wo.VehicleID = vc.VehicleID JOIN  customer  cus on 
          vc.CustomerID = cus.CustomerID   
@@ -97,10 +98,20 @@
         
             
             <tbody>
+            <?php
+                        $vtypein =  $row2['vtype'];
+                         if($vtypein == "VT002"){
+                            $vtype_r = str_replace("VT002",'Motor',$vtypein);
+                        }else
+                        $vtype_r = str_replace("VT001",'Mobil',$vtypein);
+                        
+            ?>
+
+                <tr><th>Vehicle Type :  </th> <td> <?= $vtype_r ?></td></tr>
                 <tr><th>Customer Name   : </th> <td><?=$row2['cusname'];?> </td></tr>
                 <tr><th>Order Date :  </th> <td><?=$row2['createdate'];?> </td></tr>
                 <tr><th>Order Desc :  </th> <td><?=$row2['orderdesc'];?> </td></tr>
-                <tr><th>Service Type :  </th> <td> </td></tr>
+                <tr><th>Service Type :  </th> <td>Service Ringan - Rp. <?= number_format('300000',2) ?> </td></tr>
                 
                 <tbody>
                 <tr>
@@ -120,16 +131,19 @@
                 While($row4= mysqli_fetch_assoc($res4)){
                     
                     $no++;
-                    $totalprice = ($row4['ItemPrice'] * $row4['Quantity'] );
+                    $totalprice = ($row4['ItemPrice'] * $row4['Quantity'] )  ;
+                    $totaltagihan = ($totalprice + 100000);
+
+                    echo var_dump($totaltagihan);
                     
             ?>
                     <tr>
                         <td > <?= $no?></td>
                         <td> <?= $row4['ItemID'];?></td> 
                         <td> <?= $row4['ItemName'];?></td> 
-                        <td> <?= $row4['ItemPrice'];?></td>
+                        <td>Rp.<?= number_format($row4['ItemPrice'],2) ;?></td>
                         <td> <?= $row4['Quantity'];?></td>
-                        <td>Rp. <?= number_format($totalprice,2) ?></td>              
+                        <td>Rp. <?= number_format( $totalprice,2) ?></td>              
                     </tr>    
             <?php
             }
@@ -141,7 +155,7 @@
                 
 
                 <?php 
-                $totalitempay = $row3['Total_pay'];
+                $totalitempay = $row3['Total_pay'] + 300000;
                 if($totalitempay == null){
                     $totalitempay = 0;
                 }
@@ -181,21 +195,20 @@
         
         if(isset($_POST['btn'])){
 
-            
-
-            $statusend = "Done";
-            $datedone = date("Y/m/d");
-
-            $sql5="UPDATE work_order SET stat = '$statusend' , DoneDate='$datedone ' WHERE WOID ='$inwo' ";
-            $res5= mysqli_query($con,$sql5);
-
             $sql6="SELECT stat FROM work_order WHERE WOID = '$inwo' ";
             $res6 = mysqli_query($con,$sql6);
             $row6 = mysqli_fetch_assoc($res6);
             
-            if(!$row6['stat'] == "Done"){
+
+            $statusend = "Done";
+            $datedone = date("Y/m/d");
+            $statnow = $row6['stat'];
+
+
+            if($statnow === "OnProgress"){
+                $sql5="UPDATE work_order SET stat = '$statusend' , DoneDate='$datedone ' WHERE WOID ='$inwo' ";
+                $res5= mysqli_query($con,$sql5);
                 if($res5){
-                
                     echo "
                     <script>
                         alert('CekOut Berhasil');
@@ -210,14 +223,23 @@
                     </script>
                 "; 
                 }
-            }else if($row6['stat'] == "Done"){
-                
+            }else if($statnow === "Done"){
                 echo    "<script>";
                 echo   "     alert(' CekOut Gaggal ! Karena Status Sudah Done ')";
                 echo    "</script>";
                      
                  echo   "<meta http-equiv='refresh' content= '0 url=../user/wo.php' >";
+               
             }
+
+
+           
+
+           
+            
+            
+
+            
 
 
         }

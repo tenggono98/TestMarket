@@ -55,7 +55,7 @@
             <label >ID Customer </label><br>
      
 
-            <form action="" method="POST">
+            <form action="" method="POST"  >
             <?php 
             error_reporting(E_ALL ^ E_NOTICE);  
             error_reporting(E_ERROR | E_PARSE);
@@ -90,7 +90,7 @@
             ?>
             
             <br><h2>Selected Customer : <?= $selectcus ?></h2>
-            <form action="" method="POST">
+            <form action="" method="POST" data-toggle="validator" role="form">
             
              <br>
                 <label>Work Order ID</label><br>
@@ -120,10 +120,10 @@
                 </Select><br>
                 <br>
                 <label>Vehicle Note</label><br>
-                <textarea name="note" cols="30" rows="4" placeholder="Vehicle Notes"></textarea><br>
+                <textarea name="note" cols="30" rows="4" placeholder="Vehicle Notes" required></textarea><br>
                 <br>
                 <label>Order Desc</label><br>
-                <textarea name="desc" cols="30" rows="4" placeholder="Desc Of Order"></textarea><br>
+                <textarea name="desc" cols="30" rows="4" placeholder="Desc Of Order" required ></textarea><br>
                 <input type="hidden" name="date" value="<?= $datenow ?>">
                 <input type="submit" name="btn2" value="Submit">
             </form> 
