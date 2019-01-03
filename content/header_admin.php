@@ -34,9 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="../user/customer.php">Customer</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="../user/About.php">About</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="../function/clear.php">Logout</a>
             </li>

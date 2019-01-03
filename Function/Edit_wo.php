@@ -55,7 +55,7 @@
         <div class="container">
 
             <h1>Edit Work Order</h1>
-            <form  method="POST" >
+            <form  method="POST" data-toggle="validator" role="form">
                     <Label >Work Order ID</Label><br>
                     <input type="text" name="id" value="<?= $row['WOID'];?>" readonly><br>
     
@@ -66,7 +66,7 @@
                     <input type="text" name="date" value="<?= $row['WODateTime'];?>" readonly><br>
 
                     <Label>Order Desc</Label><br>
-                    <textarea name="desc" id="" cols="30" rows="4"><?= $row['OrderDescription'];?></textarea><br>
+                    <textarea name="desc" id="" cols="30" rows="4" required><?= $row['OrderDescription'];?></textarea><br>
 
                     <br>
                     <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >

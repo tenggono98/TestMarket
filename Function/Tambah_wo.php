@@ -112,12 +112,12 @@
             echo "</select>";
             ?>
                 
-                <br>
+                <!-- <br>
                 <label>Type Vehicle</label><br>
                 <Select name="type">
                     <option value="VT001">Car</option>
                     <option value="VT002">Motorcycle</option>
-                </Select><br>
+                </Select><br> -->
                 <br>
                 <label>Vehicle Note</label><br>
                 <textarea name="note" cols="30" rows="4" placeholder="Vehicle Notes" required></textarea><br>

@@ -19,7 +19,7 @@ if ($res) {
 	echo '<script language="javascript">';
 	echo 'alert("Data Tidak Bisa di hapus !")';
 	echo '</script>';
-	echo mysqli_error();
+	echo mysqli_error($con);
 }
 
 ?>

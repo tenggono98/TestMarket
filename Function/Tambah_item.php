@@ -49,6 +49,7 @@
         include "../Function/autogen_allid.php";
 
         $autoiditem = autogen_itemid();
+        
 
         $inpID= $_GET[lel];
         
@@ -64,7 +65,7 @@
         <div class="container">
             <h1>Tambah Item</h1>
             <button><a href="../function/Tambah_vendor.php">Tambah Vendor</a></button>
-                <form  method="POST">
+                <form  method="POST" data-toggle="validator" role="form">
                 <?php
                     echo "<lable>Select Vendor ID</lable><br>";
                     echo "<select name='vendorid'>";
@@ -85,20 +86,20 @@
                     <input type="text" name="iditem" value="<?= $autoiditem ?>" readonly><br>
                     
                     <Label>Name</Label><br>
-                    <input type="text" name="name" ><br>
+                    <input type="text" name="name" required><br>
                     
                     <Label>Stock</Label><br>
-                    <input type="text" name="stock" ><br>
+                    <input type="text" name="stock" required><br>
                     
                     <Label>Price</Label><br>
-                    <input type="text" name="price" ><br>
+                    <input type="text" name="price" required><br>
                     
                     <Label>Purchase Date</Label><br>
-                    <input type="date" name="pdate"><br> 
+                    <input type="date" name="pdate"required><br> 
                     <br>
 
                     <Label>Desc</Label><br>
-                    <textarea name ="desc"cols=50 rows=5></textarea><br> 
+                    <textarea name ="desc"cols=50 rows=5 required></textarea><br> 
                     <br>
                     
                     <input type="submit" value="Submit" name="submit" >

@@ -57,13 +57,13 @@
                 <input type="text" name="id" value="<?= $autocusid ?>" readonly><br>
                 <br>
                 <label >Customer Name </label><br>
-                <input type="text" name="name" ><br>
+                <input type="text" name="name" required><br>
                 <br>
                 <label >Customer Phone Number</label><br>
-                <input type="number" name="pnum" ><br>
+                <input type="number" name="pnum" required><br>
                 <br>
                 <label >Customer Email </label><br>
-                <input type="email" name="email" ><br>
+                <input type="email" name="email" required><br>
                 <br>
                 <input type="submit" name="btn" value="Submit">
             </form>

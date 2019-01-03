@@ -61,7 +61,7 @@
         <div class="container">
 
             <h1>Edit Item Work Order</h1>
-            <form  method="POST" >
+            <form  method="POST" data-toggle="validator" role="form">
                     <Label> Work Order ID </Label><br>
                     <input type="text" name="idwo" value="<?= $row['WOID'];?>" readonly><br>
     
@@ -69,7 +69,7 @@
                     <input type="text" name="iditem" value="<?= $row['ItemID'];?>"readonly><br>
                     
                     <Label>Qty</Label><br>
-                    <input type="text" name="qty" pattern="^(\d{1}|\d{4})$" value="<?= $row['Quantity'];?>" > /Qty Total : <?= $row['stock'];?>  <br>
+                    <input type="text" name="qty" pattern="^(\d{1}|\d{4})$" value="<?= $row['Quantity'];?>" required> /Qty Total : <?= $row['stock'];?>  <br>
 
 
                     <br>

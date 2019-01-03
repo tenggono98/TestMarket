@@ -46,7 +46,7 @@
         <div class="container">
 
             <h1>Edit Staff</h1>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data" data-toggle="validator" role="form">
                     <Label >Staff ID</Label><br>
                     <input type="text" name="id" value="<?= $row['StaffID'];?>" readonly><br>
                     
@@ -69,23 +69,23 @@
                     </Select><br>
                     
                     <Label>Staff Name</Label><br>
-                    <input type="text" name="name" value="<?= $row['StaffName'];?>"><br>
+                    <input type="text" name="name" value="<?= $row['StaffName'];?>" required><br>
                     
                     <Label>Staff Phone Number</Label><br>
-                    <input type="text" name="num" value="<?= $row['StaffPNumber'];?>"><br>
+                    <input type="text" name="num" value="<?= $row['StaffPNumber'];?>" required><br>
 
                     <Label>Staff Email</Label><br>
-                    <input type="email" name="email" value="<?= $row['StaffEmail'];?>"><br>
+                    <input type="email" name="email" value="<?= $row['StaffEmail'];?>" required><br>
 
                     <Label>Staff Password</Label><br>
-                    <input type="password" name="pass"value="<?= $row['StaffPassword'];?>" ><br>
+                    <input type="password" name="pass"value="<?= $row['StaffPassword'];?>" required><br>
 
                     
                     <Label>DOB</Label><br>
-                    <input type="date" name="date" value="<?= $row['StaffDOB'];?>"><br>
+                    <input type="date" name="date" value="<?= $row['StaffDOB'];?>" required><br>
 
                     <Label>Salary</Label><br>
-                    Rp. <input type="number" name="gaji" value="<?= $row['StaffSalary'];?>"><br>
+                    Rp. <input type="number" name="gaji" value="<?= $row['StaffSalary'];?>" required><br>
     
                     <br>
                     <input type="submit" value="Submit" data-toggle="modal" data-target="#exampleModal" name="sub" >
