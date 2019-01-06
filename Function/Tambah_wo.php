@@ -145,8 +145,8 @@
         $sqldetail = "INSERT INTO wo_detail(StaffID,WOID) VALUES ('$idstaff','$woid')";
         $sqlwo = "INSERT INTO work_order(WOID,VehicleID,WODateTime,OrderDescription,stat) VALUES('$woid','$vecid','$datenow','$descorder','$stat')";
         $res1 = mysqli_query($con,$sqlvehicle);
+        $res1 = mysqli_query($con,$sqlwo);
         $res1  = mysqli_query($con,$sqldetail);
-        $res1= mysqli_query($con,$sqlwo);
         
             if($res1){               
                 echo "

@@ -111,7 +111,7 @@
                 <tr><th>Customer Name   : </th> <td><?=$row2['cusname'];?> </td></tr>
                 <tr><th>Order Date :  </th> <td><?=$row2['createdate'];?> </td></tr>
                 <tr><th>Order Desc :  </th> <td><?=$row2['orderdesc'];?> </td></tr>
-                <tr><th>Service Type :  </th> <td>Service Ringan - Rp. <?= number_format('300000',2) ?> </td></tr>
+                <!-- <tr><th>Service Type :  </th> <td>Service Ringan - Rp. <?= number_format('300000',2) ?> </td></tr> -->
                 
                 <tbody>
                 <tr>
@@ -155,7 +155,7 @@
                 
 
                 <?php 
-                $totalitempay = $row3['Total_pay'] + 300000;
+                $totalitempay = $row3['Total_pay'];
                 if($totalitempay == null){
                     $totalitempay = 0;
                 }
