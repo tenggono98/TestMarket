@@ -131,21 +131,21 @@
             $formatpic = explode('.','$namefile');
             $formatpic = strtolower(end($formatpic));
             
-            if(!in_array($formatpic,$validformatpic)){
-                echo "  <script>
-                         alert('File is Not a Picture');
-                        </script>";
-                        exit();
+            // if(!in_array($formatpic,$validformatpic)){
+            //     echo "  <script>
+            //              alert('File is Not a Picture');
+            //             </script>";
+            //             exit();
                         
 
-            }
+            // }
 
-            if($sizefile > 20000){
-                echo "  <script>
-                alert(' Picture Size to Big max:20MB');
-               </script>";
-               exit();
-            }
+            // if($sizefile > 20000){
+            //     echo "  <script>
+            //     alert(' Picture Size to Big max:20MB');
+            //    </script>";
+            //    exit();
+            // }
 
             move_uploaded_file($tempName,'../img/staff_pic/'.$namefile);
 

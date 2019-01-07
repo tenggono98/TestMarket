@@ -25,7 +25,7 @@
     <section Class="ContentStaff_M">
 
 
-            <div  Class="container"  >
+        <div  Class="container" >
 
             <h1>Staff List</h1>
 
@@ -34,67 +34,66 @@
             <div Class="btn_top" style=" padding-bottom:1%;">
                 <button ><a href="../Function/Tambah_staff.php">Tambah Staff</a></button><br>
             </div>
+            <div style="width:100%">
+                <table class="table table-hover table-bordered results">
+                <div class="form-group pull-right">
+                    <input type="text" class="search form-control" placeholder="What you looking for?">
+                </div>
+                <br>
+                    <thead>
+                        <th>Pic</th>
+                        <th>ID</th>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>PhoneNumber</th>
+                        <th>Email</th>
+                        <th>DOB</th>
+                        <th>Salary</th>
+                        <th>Control</th>
+                    </thead>
+                <?php
 
-            <table class="table table-hover table-bordered results" >
-            <div class="form-group pull-right">
-                <input type="text" class="search form-control" placeholder="What you looking for?">
+                include "../Function/condb.php";
+
+                $sql = "Select * from staff";
+                $res = mysqli_query($con,$sql);
+                $no=0;
+
+                While($row= mysqli_fetch_assoc($res)){
+                        $no++
+                ?>
+                    <tbody>
+
+                        <?php
+                            error_reporting(E_ALL ^ E_NOTICE);  
+                            error_reporting(E_ERROR | E_PARSE);
+                            $rankin =  $row['STypeID'];
+                            if($rankin == "TP001"){
+                            $rank_r = str_replace("TP001",Manager,$rankin);
+                            }
+                            else if($rankin == "TP002")
+                            $rank_r = str_replace("TP002",Staff,$rankin);
+                        ?>
+                        <tr>
+                            <td><img src="../img/staff_pic/<?= $row['img'];?>" alt="" width="100px"></td>
+                            <td><?= $row['StaffID'];?></td>
+                            <td><?= $rank_r?></td>
+                            <td><?= $row['StaffName'];?></td>
+                            <td><?= $row['StaffPNumber'];?></td>
+                            <td><?= $row['StaffEmail'];?></td>
+                            <td><?= $row['StaffDOB'];?></td>
+                            <td>Rp.<?= number_format($row['StaffSalary'], 2);?></td>
+                            <td>
+                            <button><a href="../Function/Edit_staff.php?lel=<?=$row['StaffID']; ?>">Edit</a></button>
+                            <button><a href="../Function/Del_staff.php?lel=<?=$row['StaffID']; ?>">Delete</a></button>
+                            </td>
+                        </tr>
+                <?php
+                }
+                ?>
+                    </tbody>
+                </table>
             </div>
-            <br>
-                <thead>
-                    <th>Pic</th>
-                    <th>ID</th>
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>PhoneNumber</th>
-                    <th>Email</th>
-                    <th>DOB</th>
-                    <th>Salary</th>
-                    <th>Control</th>
-
-                </thead>
-            
-            <?php
-
-            include "../Function/condb.php";
-
-            $sql = "Select * from staff";
-            $res = mysqli_query($con,$sql);
-            $no=0;
-
-            While($row= mysqli_fetch_assoc($res)){
-                    $no++
-            ?>
-                <tbody>
-
-                    <?php
-                        error_reporting(E_ALL ^ E_NOTICE);  
-                        error_reporting(E_ERROR | E_PARSE);
-                        $rankin =  $row['STypeID'];
-                        if($rankin == "TP001"){
-                        $rank_r = str_replace("TP001",Manager,$rankin);
-                        }
-                        else if($rankin == "TP002")
-                        $rank_r = str_replace("TP002",Staff,$rankin);
-                    ?>
-                    <tr>
-                        <td><img src="../img/staff_pic/<?= $row['img'];?>" alt="" width="100px"></td>
-                        <td><?= $row['StaffID'];?></td>
-                        <td><?= $rank_r?></td>
-                        <td><?= $row['StaffName'];?></td>
-                        <td><?= $row['StaffPNumber'];?></td>
-                        <td><?= $row['StaffEmail'];?></td>
-                        <td><?= $row['StaffDOB'];?></td>
-                        <td>Rp.<?= number_format($row['StaffSalary'], 2);?></td>
-                        <td>
-                        <button><a href="../Function/Edit_staff.php?lel=<?=$row['StaffID']; ?>">Edit</a></button>
-                        <button><a href="../Function/Del_staff.php?lel=<?=$row['StaffID']; ?>">Delete</a></button>
-                        </td>
-                    </tr>
-            <?php
-            }
-            ?>
-                </tbody>
-            </table>
         </div>
 
 

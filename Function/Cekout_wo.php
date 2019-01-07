@@ -132,7 +132,7 @@
                     
                     $no++;
                     $totalprice = ($row4['ItemPrice'] * $row4['Quantity'] )  ;
-                    $totaltagihan = ($totalprice + 100000);
+                    
 
                     
                     
